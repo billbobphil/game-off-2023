@@ -1,3 +1,77 @@
-[gd_scene format=3 uid="uid://djd4loyuphb7b"]
+[gd_scene load_steps=6 format=3 uid="uid://djd4loyuphb7b"]
+
+[ext_resource type="Script" path="res://player/Player.gd" id="1_hjtsy"]
+[ext_resource type="Texture2D" uid="uid://d47vvbdw4ij6" path="res://placeholder/art/32x32-cube.png" id="1_mqwx3"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h7qhs"]
+radius = 11.0
+height = 36.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_61yqj"]
+size = Vector2(638, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sc0xv"]
+size = Vector2(69, 32)
 
 [node name="Root" type="Node2D"]
+
+[node name="Player" type="CharacterBody2D" parent="."]
+script = ExtResource("1_hjtsy")
+jumpVelocity = -700.0
+fallMultiplier = 4.0
+jumpCutoffSpeed = -300.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+texture = ExtResource("1_mqwx3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+z_index = 1
+shape = SubResource("CapsuleShape2D_h7qhs")
+
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2(17, 342)
+
+[node name="Sprite2D" type="Sprite2D" parent="Floor"]
+position = Vector2(302.5, 0)
+scale = Vector2(19.9063, 1)
+texture = ExtResource("1_mqwx3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(303, 0)
+shape = SubResource("RectangleShape2D_61yqj")
+
+[node name="Floor2" type="StaticBody2D" parent="."]
+position = Vector2(330, 272)
+
+[node name="Sprite2D" type="Sprite2D" parent="Floor2"]
+position = Vector2(302.5, 0)
+scale = Vector2(19.9063, 1)
+texture = ExtResource("1_mqwx3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor2"]
+position = Vector2(303, 0)
+shape = SubResource("RectangleShape2D_61yqj")
+
+[node name="Floor3" type="StaticBody2D" parent="."]
+position = Vector2(429, 188)
+
+[node name="Sprite2D" type="Sprite2D" parent="Floor3"]
+position = Vector2(302.5, 0)
+scale = Vector2(19.9063, 1)
+texture = ExtResource("1_mqwx3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor3"]
+position = Vector2(303, 0)
+shape = SubResource("RectangleShape2D_61yqj")
+
+[node name="Floor4" type="StaticBody2D" parent="."]
+position = Vector2(-289, 112)
+
+[node name="Sprite2D" type="Sprite2D" parent="Floor4"]
+position = Vector2(586, 0)
+scale = Vector2(2.1875, 1)
+texture = ExtResource("1_mqwx3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor4"]
+position = Vector2(586.5, 0)
+shape = SubResource("RectangleShape2D_sc0xv")
