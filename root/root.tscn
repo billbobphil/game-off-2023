@@ -17,11 +17,9 @@ size = Vector2(69, 32)
 
 [node name="Player" type="CharacterBody2D" parent="."]
 script = ExtResource("1_hjtsy")
-jumpVelocity = -700.0
-fallMultiplier = 4.0
-jumpCutoffSpeed = -300.0
-coyoteTimeWindow = 0.1
-inputBufferTimeWindow = 0.1
+isDashEnabled = true
+isScaleUpEnabled = true
+isScaleDownEnabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
 texture = ExtResource("1_mqwx3")

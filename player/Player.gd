@@ -8,6 +8,11 @@ class_name Player
 @export_group("")
 var mass : float = 1.0;
 
+@export_group("Ability Flags")
+@export var isDashEnabled : bool = false;
+@export var isScaleUpEnabled : bool = false;
+@export var isScaleDownEnabled : bool = false;
+
 @export_group("Scale Properties")
 @export_subgroup("Normal Scale")
 @export var normalSpriteScale : float = 1.0
@@ -21,25 +26,35 @@ var mass : float = 1.0;
 
 @export_group("Movement Properties")
 @export var speed : float = 300.0
-@export var jumpVelocity : float = -500.0
-@export var fallMultiplier : float = 2.5
+@export_subgroup("Jump Properties")
+@export var jumpVelocity : float = -700.0
+@export var fallMultiplier : float = 4
+@export var jumpCutoffSpeed : float = -300
+@export var coyoteTimeWindow : float = 0.1;
+@export var inputBufferTimeWindow : float = 0.1;
 var jumpTimer : float = 0;
 var isJumping : bool = false;
-@export var jumpCutoffSpeed : float = 100.0
 var coyoteTimer : float = 0;
-@export var coyoteTimeWindow : float = 0;
 var shouldFall : bool = false;
 var inputBufferTimer : float = 0;
 var isInputBuffered : bool = false;
-@export var inputBufferTimeWindow : float = 0;
+@export_subgroup("Dash Properties")
+@export var dashSpeed : float = 600.0;
+@export var dashDuration : float = 0.2;
+@export var dashCooldown : float = 0.5;
+var isDashing : bool = false;
+var canDash : bool = true;
+var dashTimer : float = 0;
+var dashCooldownTimer : float = 0;
+
 
 
 var currentScale : Scales = Scales.NORMAL;
 
 enum Scales {
-    SMALL,
-    NORMAL,
-    LARGE
+	SMALL,
+	NORMAL,
+	LARGE
 }
 
 var scaleDictionary : Dictionary = {};
@@ -49,7 +64,6 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 #TODO: double-jump?
 #TODO: wall-jump?
-#TODO: dash?
 #TODO: scale-effects
 
 func _ready():
@@ -72,10 +86,10 @@ func initializeScaleDictionary():
 	scaleDictionary[Scales.LARGE] = largeScale;
 
 func _process(_delta):
-	if(Input.is_action_just_pressed("scale_up")):
+	if(isScaleUpEnabled && Input.is_action_just_pressed("scale_up")):
 		scaleUp();
 
-	if(Input.is_action_just_pressed("scale_down")):
+	if(isScaleDownEnabled && Input.is_action_just_pressed("scale_down")):
 		scaleDown();
 
 func scaleUp():
@@ -95,7 +109,6 @@ func scaleDown():
 	else:
 		currentScale = Scales.SMALL;
 	applyScaleTransformations();
-
 	
 func applyScaleTransformations():
 	var newScale : Scale = scaleDictionary[currentScale];
@@ -108,6 +121,7 @@ func applyScaleTransformations():
 func _physics_process(delta):
 
 	handleInputBufferTimer(delta);
+	handleDashTimer(delta);
 
 	if(is_on_floor()):
 		onContactWithFloorHandler()
@@ -119,6 +133,7 @@ func _physics_process(delta):
 
 	jumpInputHandler();
 	horizontalMovement();
+	dashInputHandler();
 	move_and_slide()
 
 func jump():
@@ -131,6 +146,9 @@ func bufferredJump():
 	inputBufferTimer = 0;
 
 func horizontalMovement():
+	if(isDashing):
+		return;
+
 	var direction = Input.get_axis("move_left", "move_right")
 	if direction:
 		velocity.x = direction * speed
@@ -144,10 +162,19 @@ func handleInputBufferTimer(delta):
 			isInputBuffered = false;
 			inputBufferTimer = 0;
 
+func handleDashTimer(delta):
+	if isDashing:
+		dashTimer += delta
+		if dashTimer > dashDuration:
+			endDash()
+
+	dashCooldownTimer += delta
+
 func onContactWithFloorHandler():
 	coyoteTimer = 0;
 	shouldFall = false;
 	isJumping = false;
+	canDash = true;
 	if(isInputBuffered):
 		bufferredJump();
 
@@ -168,9 +195,31 @@ func jumpInputHandler():
 	if !isJumping && Input.is_action_just_pressed("jump") && (is_on_floor() || isCoyoteTimeValid()):
 		jump();
 
-	if isJumping and !Input.is_action_pressed("jump"):
+	if isJumping && !isDashing && !Input.is_action_pressed("jump"):
 		if(velocity.y < jumpCutoffSpeed):
 			velocity.y = jumpCutoffSpeed
 
 	if Input.is_action_just_pressed("jump") && !is_on_floor():
 		isInputBuffered = true;
+
+func dashInputHandler():
+	if(isDashEnabled && canDash && !isDashing && Input.is_action_just_pressed("dash")):
+		beginDash();
+
+func beginDash():
+	isDashing = true;
+	canDash = false;
+	var dashDirection = getDashDirection();
+	velocity = dashDirection * dashSpeed; #requires you to be already moving a direction
+	dashTimer = 0.0;
+	dashCooldownTimer = 0.0;
+
+func endDash():
+	isDashing = false
+	velocity.x = 0;
+
+func getDashDirection() -> Vector2:
+	var direction = Vector2.ZERO;
+	direction.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
+	direction.y = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
+	return direction.normalized()
