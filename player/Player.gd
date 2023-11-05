@@ -2,6 +2,24 @@ extends CharacterBody2D
 
 class_name Player
 
+@onready var sprite : Sprite2D = $Sprite2D
+@onready var collisionShape : CollisionShape2D = $CollisionShape2D
+
+@export_group("")
+var mass : float = 1.0;
+
+@export_group("Scale Properties")
+@export_subgroup("Normal Scale")
+@export var normalSpriteScale : float = 1.0
+@export var normalMass : float = 1.0;
+@export_subgroup("Small Scale")
+@export var smallSpriteScale : float = 0.5
+@export var smallMass : float = 0.5;
+@export_subgroup("Large Scale")
+@export var largeSpriteScale : float = 2.0
+@export var largeMass : float = 2.0;
+
+@export_group("Movement Properties")
 @export var speed : float = 300.0
 @export var jumpVelocity : float = -500.0
 @export var fallMultiplier : float = 2.5
@@ -15,6 +33,17 @@ var inputBufferTimer : float = 0;
 var isInputBuffered : bool = false;
 @export var inputBufferTimeWindow : float = 0;
 
+
+var currentScale : Scales = Scales.NORMAL;
+
+enum Scales {
+    SMALL,
+    NORMAL,
+    LARGE
+}
+
+var scaleDictionary : Dictionary = {};
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -22,6 +51,59 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 #TODO: wall-jump?
 #TODO: dash?
 #TODO: scale-effects
+
+func _ready():
+	initializeScaleDictionary();
+
+func initializeScaleDictionary():
+	var normalScale : Scale = Scale.new();
+	normalScale.spriteScale = normalSpriteScale;
+	normalScale.mass = normalMass;
+	scaleDictionary[Scales.NORMAL] = normalScale;
+
+	var smallScale : Scale = Scale.new();
+	smallScale.spriteScale = smallSpriteScale;
+	smallScale.mass = smallMass;
+	scaleDictionary[Scales.SMALL] = smallScale;
+
+	var largeScale : Scale = Scale.new();
+	largeScale.spriteScale = largeSpriteScale;
+	largeScale.mass = largeMass;
+	scaleDictionary[Scales.LARGE] = largeScale;
+
+func _process(_delta):
+	if(Input.is_action_just_pressed("scale_up")):
+		scaleUp();
+
+	if(Input.is_action_just_pressed("scale_down")):
+		scaleDown();
+
+func scaleUp():
+	if(currentScale == Scales.LARGE):
+		return;
+	elif(currentScale == Scales.SMALL):
+		currentScale = Scales.NORMAL;
+	else:
+		currentScale = Scales.LARGE;
+	applyScaleTransformations();
+
+func scaleDown():
+	if(currentScale == Scales.SMALL):
+		return;
+	elif(currentScale == Scales.LARGE):
+		currentScale = Scales.NORMAL;
+	else:
+		currentScale = Scales.SMALL;
+	applyScaleTransformations();
+
+	
+func applyScaleTransformations():
+	var newScale : Scale = scaleDictionary[currentScale];
+	sprite.scale.x = newScale.spriteScale;
+	collisionShape.scale.x = newScale.spriteScale;
+	sprite.scale.y = newScale.spriteScale;
+	collisionShape.scale.y = newScale.spriteScale;
+	mass = newScale.mass;
 
 func _physics_process(delta):
 
@@ -33,7 +115,7 @@ func _physics_process(delta):
 	coyoteTimeHandler(delta);
 
 	if shouldFall:
-		velocity.y += gravity * delta * (fallMultiplier - 1)
+		velocity.y += gravity * delta * (fallMultiplier - 1) * mass
 
 	jumpInputHandler();
 	horizontalMovement();
