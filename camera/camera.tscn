@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bnm5lot08oqdt"]
+
+[ext_resource type="Script" path="res://camera/Camera.gd" id="1_ciaxa"]
+
+[node name="Camera" type="Camera2D"]
+position = Vector2(320, 180)
+script = ExtResource("1_ciaxa")

@@ -1,17 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://djd4loyuphb7b"]
+[gd_scene load_steps=7 format=3 uid="uid://djd4loyuphb7b"]
 
 [ext_resource type="Script" path="res://player/Player.gd" id="1_hjtsy"]
 [ext_resource type="Texture2D" uid="uid://d47vvbdw4ij6" path="res://placeholder/art/32x32-cube.png" id="1_mqwx3"]
+[ext_resource type="TileSet" uid="uid://ka00nmss34dh" path="res://placeholder/placeholder-tileset.tres" id="3_ir4im"]
+[ext_resource type="PackedScene" uid="uid://72cl4kjth21x" path="res://camera/camera_manager.tscn" id="4_ashhi"]
+[ext_resource type="PackedScene" uid="uid://db05b24ta5icg" path="res://camera/camera_transition.tscn" id="6_yk5pr"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h7qhs"]
 radius = 11.0
 height = 36.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_61yqj"]
-size = Vector2(638, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sc0xv"]
-size = Vector2(69, 32)
 
 [node name="Root" type="Node2D"]
 
@@ -28,50 +25,14 @@ texture = ExtResource("1_mqwx3")
 z_index = 1
 shape = SubResource("CapsuleShape2D_h7qhs")
 
-[node name="Floor" type="StaticBody2D" parent="."]
-position = Vector2(17, 342)
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("3_ir4im")
+format = 2
+layer_0/name = "Playable"
+layer_0/tile_data = PackedInt32Array(1310720, 65536, 0, 1310721, 65536, 0, 1310722, 65536, 0, 1310723, 65536, 0, 1310724, 65536, 0, 1310725, 65536, 0, 1310726, 65536, 0, 1310727, 65536, 0, 1310728, 65536, 0, 1310729, 65536, 0, 1310730, 65536, 0, 1310731, 65536, 0, 1310732, 65536, 0, 1310733, 65536, 0, 1310734, 65536, 0, 1310735, 65536, 0, 1310736, 65536, 0, 1310737, 65536, 0, 1310738, 65536, 0, 1310739, 65536, 0, 1310740, 65536, 0, 1310741, 65536, 0, 1310742, 65536, 0, 1310743, 65536, 0, 1310744, 65536, 0, 1310745, 65536, 0, 1310746, 65536, 0, 1310747, 65536, 0, 1310748, 65536, 0, 1310749, 65536, 0, 1310750, 65536, 0, 1310751, 65536, 0, 1310752, 65536, 0, 1310753, 65536, 0, 1310754, 65536, 0, 1310755, 65536, 0, 1310756, 65536, 0, 1310757, 65536, 0, 1310758, 65536, 0, 1310759, 65536, 0, 1310760, 65536, 0, 1376255, 65536, 0, 1114127, 65536, 0, 1114128, 65536, 0, 1114129, 65536, 0, 1114130, 65536, 0, 1114131, 65536, 0, 1114132, 65536, 0, 917529, 65536, 0, 917530, 65536, 0, 917531, 65536, 0, 917532, 65536, 0, 917533, 65536, 0, 917534, 65536, 0, 720929, 65536, 0, 720930, 65536, 0, 720931, 65536, 0, 720932, 65536, 0, 720933, 65536, 0, 720934, 65536, 0, 458781, 65536, 0, 458780, 65536, 0, 458779, 65536, 0, 458778, 65536, 0, 262183, 65536, 0, 327719, 65536, 0, 393255, 65536, 0, 458791, 65536, 0, 524327, 65536, 0, 589863, 65536, 0, 655399, 65536, 0, 720935, 65536, 0, 786471, 65536, 0, 852007, 65536, 0, 917543, 65536, 0, 983079, 65536, 0, 1048615, 65536, 0, 39, 65536, 0, 65575, 65536, 0, 131111, 65536, 0, 196647, 65536, 0, 393213, 65536, 0, 458749, 65536, 0, 524285, 65536, 0, 589821, 65536, 0, 655357, 65536, 0, 720893, 65536, 0, 786429, 65536, 0, 851965, 65536, 0, 917501, 65536, 0, 983037, 65536, 0, 1048573, 65536, 0, 1114109, 65536, 0, 1179645, 65536, 0, 1245181, 65536, 0, 1310717, 65536, 0, 1376253, 65536, 0, 1376254, 65536, 0, 1310761, 65536, 0, 1310762, 65536, 0, 1310763, 65536, 0, 983084, 65536, 0, 1048620, 65536, 0, 1114156, 65536, 0, 1179692, 65536, 0, 1245228, 65536, 0, 1310764, 65536, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="Floor"]
-position = Vector2(302.5, 0)
-scale = Vector2(19.9063, 1)
-texture = ExtResource("1_mqwx3")
+[node name="CameraManager" parent="." instance=ExtResource("4_ashhi")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
-position = Vector2(303, 0)
-shape = SubResource("RectangleShape2D_61yqj")
-
-[node name="Floor2" type="StaticBody2D" parent="."]
-position = Vector2(330, 272)
-
-[node name="Sprite2D" type="Sprite2D" parent="Floor2"]
-position = Vector2(302.5, 0)
-scale = Vector2(19.9063, 1)
-texture = ExtResource("1_mqwx3")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor2"]
-position = Vector2(303, 0)
-shape = SubResource("RectangleShape2D_61yqj")
-
-[node name="Floor3" type="StaticBody2D" parent="."]
-position = Vector2(429, 188)
-
-[node name="Sprite2D" type="Sprite2D" parent="Floor3"]
-position = Vector2(302.5, 0)
-scale = Vector2(19.9063, 1)
-texture = ExtResource("1_mqwx3")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor3"]
-position = Vector2(303, 0)
-shape = SubResource("RectangleShape2D_61yqj")
-
-[node name="Floor4" type="StaticBody2D" parent="."]
-position = Vector2(-289, 112)
-
-[node name="Sprite2D" type="Sprite2D" parent="Floor4"]
-position = Vector2(586, 0)
-scale = Vector2(2.1875, 1)
-texture = ExtResource("1_mqwx3")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor4"]
-position = Vector2(586.5, 0)
-shape = SubResource("RectangleShape2D_sc0xv")
+[node name="CameraTransition" parent="CameraManager" instance=ExtResource("6_yk5pr")]
+position = Vector2(644, 294)
+newXPosition = 960.0
