@@ -17,12 +17,15 @@ var mass : float = 1.0;
 @export_subgroup("Normal Scale")
 @export var normalSpriteScale : float = 1.0
 @export var normalMass : float = 1.0;
+@export var normalSpriteTexture : Texture2D;
 @export_subgroup("Small Scale")
 @export var smallSpriteScale : float = 0.5
 @export var smallMass : float = 0.5;
+@export var smallSpriteTexture : Texture2D;
 @export_subgroup("Large Scale")
 @export var largeSpriteScale : float = 2.0
 @export var largeMass : float = 2.0;
+@export var largeSpriteTexture : Texture2D;
 
 @export_group("Movement Properties")
 @export var speed : float = 300.0
@@ -73,16 +76,19 @@ func initializeScaleDictionary():
 	var normalScale : Scale = Scale.new();
 	normalScale.spriteScale = normalSpriteScale;
 	normalScale.mass = normalMass;
+	normalScale.spriteTexture = normalSpriteTexture;
 	scaleDictionary[Scales.NORMAL] = normalScale;
 
 	var smallScale : Scale = Scale.new();
 	smallScale.spriteScale = smallSpriteScale;
 	smallScale.mass = smallMass;
+	smallScale.spriteTexture = smallSpriteTexture;
 	scaleDictionary[Scales.SMALL] = smallScale;
 
 	var largeScale : Scale = Scale.new();
 	largeScale.spriteScale = largeSpriteScale;
 	largeScale.mass = largeMass;
+	largeScale.spriteTexture = largeSpriteTexture;
 	scaleDictionary[Scales.LARGE] = largeScale;
 
 func _process(_delta):
@@ -112,9 +118,10 @@ func scaleDown():
 	
 func applyScaleTransformations():
 	var newScale : Scale = scaleDictionary[currentScale];
-	sprite.scale.x = newScale.spriteScale;
+	# sprite.scale.x = newScale.spriteScale;
+	sprite.texture = newScale.spriteTexture;
 	collisionShape.scale.x = newScale.spriteScale;
-	sprite.scale.y = newScale.spriteScale;
+	# sprite.scale.y = newScale.spriteScale;
 	collisionShape.scale.y = newScale.spriteScale;
 	mass = newScale.mass;
 

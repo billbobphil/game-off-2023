@@ -1,0 +1,31 @@
+Hope Diamond
+
+Black
+#150e10
+
+Dark Blue
+#272739
+
+Slightly Lighter
+#393849
+
+Even Lighter
+#3b4152
+
+Dark Teal
+#4f5a64
+
+Light Teal
+#77888c
+
+
+Dream-Based VideoGame
+
+Off White
+#fae6cd
+
+Pink
+#f3c0ce
+
+Blurple
+#979bc7
