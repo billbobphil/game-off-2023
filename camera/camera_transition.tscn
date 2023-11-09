@@ -1,9 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://db05b24ta5icg"]
+[gd_scene load_steps=2 format=3 uid="uid://db05b24ta5icg"]
 
 [ext_resource type="Script" path="res://camera/CameraTransition.gd" id="1_1ry6i"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vq5mf"]
-size = Vector2(23, 74)
 
 [node name="CameraTransition" type="Area2D" groups=["CameraTransition"]]
 position = Vector2(-40, 0)
@@ -11,8 +8,5 @@ scale = Vector2(1.06545, 0.995873)
 script = ExtResource("1_1ry6i")
 newXPosition = 320.0
 newYPosition = 180.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_vq5mf")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
