@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 class_name Player
 
-@onready var sprite : Sprite2D = $Sprite2D
+@onready var sprite : AnimatedSprite2D = $AnimatedSprite2D
 @onready var collisionShape : CollisionShape2D = $CollisionShape2D
 
 @export_group("")
@@ -17,17 +17,17 @@ var mass : float = 1.0;
 @export_subgroup("Normal Scale")
 @export var normalSpriteScale : float = 1.0
 @export var normalMass : float = 1.0;
-@export var normalSpriteTexture : Texture2D;
+@export var normalSpriteFrames : SpriteFrames;
 @export var normalSpeed : float = 300.0;
 @export_subgroup("Small Scale")
 @export var smallSpriteScale : float = 0.5
 @export var smallMass : float = 0.5;
-@export var smallSpriteTexture : Texture2D;
+@export var smallSpriteFrames : SpriteFrames;
 @export var smallSpeed : float = 100.0;
 @export_subgroup("Large Scale")
 @export var largeSpriteScale : float = 2.0
 @export var largeMass : float = 2.0;
-@export var largeSpriteTexture : Texture2D;
+@export var largeSpriteFrames : SpriteFrames;
 @export var largeSpeed : float = 300.0;
 
 @export_group("Movement Properties")
@@ -74,26 +74,28 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
 	initializeScaleDictionary();
+	sprite.animation = "idle";
+	sprite.play();
 
 func initializeScaleDictionary():
 	var normalScale : Scale = Scale.new();
 	normalScale.spriteScale = normalSpriteScale;
 	normalScale.mass = normalMass;
-	normalScale.spriteTexture = normalSpriteTexture;
+	normalScale.spriteFrames = normalSpriteFrames;
 	normalScale.moveSpeed = normalSpeed;
 	scaleDictionary[Scales.NORMAL] = normalScale;
 
 	var smallScale : Scale = Scale.new();
 	smallScale.spriteScale = smallSpriteScale;
 	smallScale.mass = smallMass;
-	smallScale.spriteTexture = smallSpriteTexture;
+	smallScale.spriteFrames = smallSpriteFrames;
 	smallScale.moveSpeed = smallSpeed;
 	scaleDictionary[Scales.SMALL] = smallScale;
 
 	var largeScale : Scale = Scale.new();
 	largeScale.spriteScale = largeSpriteScale;
 	largeScale.mass = largeMass;
-	largeScale.spriteTexture = largeSpriteTexture;
+	largeScale.spriteFrames = largeSpriteFrames;
 	largeScale.moveSpeed = largeSpeed;
 	scaleDictionary[Scales.LARGE] = largeScale;
 
@@ -124,15 +126,29 @@ func scaleDown():
 	
 func applyScaleTransformations():
 	var newScale : Scale = scaleDictionary[currentScale];
-	# sprite.scale.x = newScale.spriteScale;
-	sprite.texture = newScale.spriteTexture;
+	sprite.sprite_frames = newScale.spriteFrames;
 	collisionShape.scale.x = newScale.spriteScale;
-	# sprite.scale.y = newScale.spriteScale;
 	collisionShape.scale.y = newScale.spriteScale;
 	mass = newScale.mass;
 	speed = newScale.moveSpeed;
+	sprite.animation = "idle";
+	sprite.play();
 
 func _physics_process(delta):
+
+	if(velocity.x > 0):
+		sprite.flip_h = false;
+	elif(velocity.x < 0):
+		sprite.flip_h = true;
+
+	if(velocity.x != 0):
+		if(sprite.animation != "run"):
+			sprite.animation = "run";
+			sprite.play();
+	else:
+		if(sprite.animation != "idle"):
+			sprite.animation = "idle";
+			sprite.play();
 
 	handleInputBufferTimer(delta);
 	handleDashTimer(delta);
