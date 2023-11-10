@@ -28,7 +28,6 @@ newXPosition = 900.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraManager/Screen2"]
 position = Vector2(3.44714, -3.01251)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_8latl")
 
 [node name="Screen1" parent="CameraManager" instance=ExtResource("3_sjwj8")]
@@ -36,7 +35,6 @@ position = Vector2(592, 275)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraManager/Screen1"]
 position = Vector2(-3.44702, 0)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_832ao")
 
 [node name="PlayerSpawnPoint" type="Node2D" parent="."]

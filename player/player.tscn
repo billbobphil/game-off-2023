@@ -16,7 +16,9 @@ isScaleDownEnabled = true
 normalSpriteTexture = ExtResource("2_bfpsv")
 smallMass = 0.8
 smallSpriteTexture = ExtResource("3_werly")
+smallSpeed = 300.0
 largeSpriteTexture = ExtResource("4_4ycy4")
+largeSpeed = 250.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_bfpsv")

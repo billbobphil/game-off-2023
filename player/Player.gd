@@ -18,17 +18,20 @@ var mass : float = 1.0;
 @export var normalSpriteScale : float = 1.0
 @export var normalMass : float = 1.0;
 @export var normalSpriteTexture : Texture2D;
+@export var normalSpeed : float = 300.0;
 @export_subgroup("Small Scale")
 @export var smallSpriteScale : float = 0.5
 @export var smallMass : float = 0.5;
 @export var smallSpriteTexture : Texture2D;
+@export var smallSpeed : float = 100.0;
 @export_subgroup("Large Scale")
 @export var largeSpriteScale : float = 2.0
 @export var largeMass : float = 2.0;
 @export var largeSpriteTexture : Texture2D;
+@export var largeSpeed : float = 300.0;
 
 @export_group("Movement Properties")
-@export var speed : float = 300.0
+var speed : float = 300.0
 @export_subgroup("Jump Properties")
 @export var jumpVelocity : float = -700.0
 @export var fallMultiplier : float = 4
@@ -77,18 +80,21 @@ func initializeScaleDictionary():
 	normalScale.spriteScale = normalSpriteScale;
 	normalScale.mass = normalMass;
 	normalScale.spriteTexture = normalSpriteTexture;
+	normalScale.moveSpeed = normalSpeed;
 	scaleDictionary[Scales.NORMAL] = normalScale;
 
 	var smallScale : Scale = Scale.new();
 	smallScale.spriteScale = smallSpriteScale;
 	smallScale.mass = smallMass;
 	smallScale.spriteTexture = smallSpriteTexture;
+	smallScale.moveSpeed = smallSpeed;
 	scaleDictionary[Scales.SMALL] = smallScale;
 
 	var largeScale : Scale = Scale.new();
 	largeScale.spriteScale = largeSpriteScale;
 	largeScale.mass = largeMass;
 	largeScale.spriteTexture = largeSpriteTexture;
+	largeScale.moveSpeed = largeSpeed;
 	scaleDictionary[Scales.LARGE] = largeScale;
 
 func _process(_delta):
@@ -124,6 +130,7 @@ func applyScaleTransformations():
 	# sprite.scale.y = newScale.spriteScale;
 	collisionShape.scale.y = newScale.spriteScale;
 	mass = newScale.mass;
+	speed = newScale.moveSpeed;
 
 func _physics_process(delta):
 
@@ -187,7 +194,7 @@ func onContactWithFloorHandler():
 
 func coyoteTimeHandler(delta):
 	#leave an edge if you are not on the floor anymore and you are not jumping
-	if !is_on_floor() and !isJumping:
+	if !is_on_floor() && !isJumping:
 		coyoteTimer += delta;
 	elif isJumping:
 		shouldFall = true;
@@ -220,6 +227,7 @@ func beginDash():
 	velocity = dashDirection * dashSpeed; #requires you to be already moving a direction
 	dashTimer = 0.0;
 	dashCooldownTimer = 0.0;
+	shouldFall = true;
 
 func endDash():
 	isDashing = false
