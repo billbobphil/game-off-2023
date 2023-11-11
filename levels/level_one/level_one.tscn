@@ -1,18 +1,99 @@
-[gd_scene load_steps=11 format=3 uid="uid://ijqv16rq0g0i"]
+[gd_scene load_steps=16 format=3 uid="uid://dsjn2k6b48pjo"]
 
 [ext_resource type="TileSet" uid="uid://b6cknjhe8hf2x" path="res://tilesets/grunge-tileset.tres" id="1_xyjxt"]
 [ext_resource type="Script" path="res://player/PlayerSpawn.gd" id="3_hl503"]
 [ext_resource type="PackedScene" uid="uid://db05b24ta5icg" path="res://camera/camera_transition.tscn" id="3_sjwj8"]
 [ext_resource type="PackedScene" uid="uid://72cl4kjth21x" path="res://camera/camera_manager.tscn" id="4_qm486"]
-[ext_resource type="Texture2D" uid="uid://b8bu1nmvwnv7u" path="res://placeholder/art/32x32-circle.png" id="5_r83ps"]
+[ext_resource type="Texture2D" uid="uid://c5gnr2ekdcdbx" path="res://owl/owl-32x32-animated.png" id="5_76lcl"]
 [ext_resource type="Script" path="res://dialog/DialogSystem.gd" id="6_qs4uy"]
 [ext_resource type="Theme" uid="uid://lmesfrfslv4p" path="res://fonts/rainy-hearts-font-theme.tres" id="7_8iqii"]
+[ext_resource type="Script" path="res://owl/OwlSprite.gd" id="8_gptgg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8latl"]
 size = Vector2(26.8943, 96.3978)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_832ao"]
 size = Vector2(26.8942, 96.3978)
+
+[sub_resource type="Animation" id="Animation_r3krd"]
+resource_name = "hover"
+length = 0.45
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.187499, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 4), Vector2(0, -2)]
+}
+
+[sub_resource type="Animation" id="Animation_xlc4f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(507, 164)]
+}
+
+[sub_resource type="Animation" id="Animation_x4vki"]
+resource_name = "idle"
+length = 0.45
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 6, 7, 7]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1sahb"]
+_data = {
+"RESET": SubResource("Animation_xlc4f"),
+"hover": SubResource("Animation_r3krd"),
+"idle": SubResource("Animation_x4vki")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8ddgg"]
 size = Vector2(89, 114)
@@ -47,16 +128,26 @@ shape = SubResource("RectangleShape2D_832ao")
 position = Vector2(94, 303)
 script = ExtResource("3_hl503")
 
-[node name="TutorialCritter" type="Sprite2D" parent="."]
-position = Vector2(507, 164)
-texture = ExtResource("5_r83ps")
+[node name="OwlFriend" type="Node2D" parent="."]
+position = Vector2(485, 165)
 
-[node name="DialogSystem" type="Node2D" parent="TutorialCritter"]
+[node name="Sprite2D" type="Sprite2D" parent="OwlFriend"]
+position = Vector2(507, 164)
+texture = ExtResource("5_76lcl")
+hframes = 8
+script = ExtResource("8_gptgg")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="OwlFriend/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_1sahb")
+}
+
+[node name="DialogSystem" type="Node2D" parent="OwlFriend"]
 script = ExtResource("6_qs4uy")
 dialogLines = Array[String](["Hey!", "Why don't you walk over here?", "Hmm - not bad.", "Keep going, I'll talk to you later"])
 isDialogIndexTriggered = Array[bool]([false, false, true, false])
 
-[node name="DialogLabel" type="Label" parent="TutorialCritter/DialogSystem"]
+[node name="DialogLabel" type="Label" parent="OwlFriend/DialogSystem"]
 offset_left = -171.0
 offset_top = -20.0
 offset_right = -22.0
@@ -65,11 +156,12 @@ theme = ExtResource("7_8iqii")
 text = "Hey!"
 horizontal_alignment = 2
 autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
 
-[node name="Area2D" type="Area2D" parent="TutorialCritter"]
+[node name="Area2D" type="Area2D" parent="OwlFriend"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TutorialCritter/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OwlFriend/Area2D"]
 position = Vector2(-44, 101)
 shape = SubResource("RectangleShape2D_8ddgg")
 
-[connection signal="body_entered" from="TutorialCritter/Area2D" to="TutorialCritter/DialogSystem" method="oneTimeTriggerDialogChange" binds= [2]]
+[connection signal="body_entered" from="OwlFriend/Area2D" to="OwlFriend/DialogSystem" method="oneTimeTriggerDialogChange" binds= [2]]
