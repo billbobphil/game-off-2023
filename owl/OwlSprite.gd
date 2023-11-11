@@ -4,4 +4,5 @@ extends Sprite2D
 @onready var animationPlayer : AnimationPlayer = $AnimationPlayer;
 
 func _ready():
-	animationPlayer.play(animationToPlay);
+	animationPlayer.current_animation = animationToPlay;
+	animationPlayer.play();

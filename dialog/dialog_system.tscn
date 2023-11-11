@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://bbvbafsnytjt5"]
+
+[ext_resource type="Script" path="res://dialog/DialogSystem.gd" id="1_fji00"]
+[ext_resource type="Theme" uid="uid://lmesfrfslv4p" path="res://fonts/rainy-hearts-font-theme.tres" id="2_acycq"]
+[ext_resource type="SpriteFrames" uid="uid://bghxlls6lq468" path="res://dialog/next-icon-frames.tres" id="3_xmcmj"]
+
+[node name="DialogSystem" type="Node2D"]
+script = ExtResource("1_fji00")
+
+[node name="DialogLabel" type="Label" parent="."]
+offset_left = -171.0
+offset_top = -20.0
+offset_right = -22.0
+offset_bottom = 19.0
+theme = ExtResource("2_acycq")
+text = "Hello World!"
+horizontal_alignment = 2
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="NextIcon" type="Node2D" parent="."]
+position = Vector2(-96, 35)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="NextIcon"]
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("3_xmcmj")
+animation = &"pulsate"
+autoplay = "pulsate"
+
+[node name="Label" type="Label" parent="NextIcon"]
+offset_left = -28.0
+offset_top = -12.0
+offset_right = 29.0
+offset_bottom = 12.0
+theme = ExtResource("2_acycq")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "next"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true

@@ -5,22 +5,35 @@ extends Node2D
 var dialogHasBeenTriggered : Array[bool];
 var dialogIndex : int = 0;
 var isDialogActive : bool = false;
+var canDialogBeMadeActive : bool = true;
+var isDialogNextShown : bool = false;
+@onready var nextIcon : Node2D = $NextIcon;
 
 func _ready():
+	nextIcon.visible = false;
 	dialogHasBeenTriggered.resize(dialogLines.size());
 	for i in range(dialogHasBeenTriggered.size()):
 		dialogHasBeenTriggered[i] = false;
 		
 	setDialogText("");
-	startDialog()
+
+func startDialogTrigger(body):
+	if(body.name != "Player"):
+		return;
+
+	if(canDialogBeMadeActive):
+		startDialog();
+		canDialogBeMadeActive = false;
 
 func startDialog():
 	isDialogActive = true;
 	dialogIndex = 0;
 	setDialogText(dialogLines[dialogIndex]);
+	canDialogBeMadeActive = false;
+	setShouldShowDialogNext();
 
 func oneTimeTriggerDialogChange(body, index):
-	if(body.name != "Player"):
+	if(body.name != "Player" || !isDialogActive):
 		return;
 
 	if(dialogHasBeenTriggered[index]):
@@ -29,6 +42,7 @@ func oneTimeTriggerDialogChange(body, index):
 	dialogIndex = index;
 	dialogHasBeenTriggered[dialogIndex] = true;
 	setDialogText(dialogLines[dialogIndex]);
+	setShouldShowDialogNext();
 
 func _process(_delta):
 	if(isDialogActive):
@@ -40,15 +54,24 @@ func _process(_delta):
 			else:
 				isDialogActive = false;
 				setDialogText("");
-				
-			
-		# if(Input.is_action_just_pressed("acknowledge_dialog") && !isDialogIndexTriggered[dialogIndex + 1]):
-		# 	if(dialogIndex < dialogLines.size() - 1):
-		# 		dialogIndex += 1;
-		# 		setDialogText(dialogLines[dialogIndex]);
-		# 	else:
-		# 		isDialogActive = false;
-		# 		setDialogText("");
+			setShouldShowDialogNext();
 
 func setDialogText(text : String):
 	$DialogLabel.text = text;
+
+func setShouldShowDialogNext():
+
+	if(!isDialogActive):
+		nextIcon.visible = false;
+		return;
+
+	if(dialogIndex < dialogLines.size() - 1):
+		if(!isDialogIndexTriggered[dialogIndex + 1]):
+			nextIcon.visible = true;
+		else:
+			nextIcon.visible = false;
+	else:
+		if(dialogIndex == dialogLines.size() - 1):
+			nextIcon.visible = true;
+		else:
+			nextIcon.visible = false;
