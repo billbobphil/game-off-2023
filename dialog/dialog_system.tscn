@@ -5,9 +5,12 @@
 [ext_resource type="SpriteFrames" uid="uid://bghxlls6lq468" path="res://dialog/next-icon-frames.tres" id="3_xmcmj"]
 
 [node name="DialogSystem" type="Node2D"]
+z_index = 1
 script = ExtResource("1_fji00")
 
-[node name="DialogLabel" type="Label" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="DialogLabel" type="Label" parent="CanvasLayer"]
 offset_left = -171.0
 offset_top = -20.0
 offset_right = -22.0
@@ -18,16 +21,16 @@ horizontal_alignment = 2
 autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="NextIcon" type="Node2D" parent="."]
+[node name="NextIcon" type="Node2D" parent="CanvasLayer"]
 position = Vector2(-96, 35)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="NextIcon"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/NextIcon"]
 scale = Vector2(2, 2)
 sprite_frames = ExtResource("3_xmcmj")
 animation = &"pulsate"
 autoplay = "pulsate"
 
-[node name="Label" type="Label" parent="NextIcon"]
+[node name="Label" type="Label" parent="CanvasLayer/NextIcon"]
 offset_left = -28.0
 offset_top = -12.0
 offset_right = 29.0

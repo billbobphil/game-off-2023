@@ -1,0 +1,39 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://cckpvpitwo1ki"]
+
+[ext_resource type="Texture2D" uid="uid://d3pmscylehq2" path="res://torch/torch-16x16.png" id="1_krvh1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nhuac"]
+atlas = ExtResource("1_krvh1")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o8dqy"]
+atlas = ExtResource("1_krvh1")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n20ke"]
+atlas = ExtResource("1_krvh1")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_prnvt"]
+atlas = ExtResource("1_krvh1")
+region = Rect2(48, 0, 16, 16)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nhuac")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o8dqy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n20ke")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_prnvt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]

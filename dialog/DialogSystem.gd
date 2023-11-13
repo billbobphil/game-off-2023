@@ -7,7 +7,8 @@ var dialogIndex : int = 0;
 var isDialogActive : bool = false;
 var canDialogBeMadeActive : bool = true;
 var isDialogNextShown : bool = false;
-@onready var nextIcon : Node2D = $NextIcon;
+@onready var nextIcon : Node2D = get_node("CanvasLayer/NextIcon");
+@onready var dialogLabel : Label = get_node("CanvasLayer/DialogLabel");
 
 func _ready():
 	nextIcon.visible = false;
@@ -57,7 +58,7 @@ func _process(_delta):
 			setShouldShowDialogNext();
 
 func setDialogText(text : String):
-	$DialogLabel.text = text;
+	dialogLabel.text = text;
 
 func setShouldShowDialogNext():
 

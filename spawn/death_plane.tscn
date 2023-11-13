@@ -6,6 +6,6 @@
 script = ExtResource("1_koftm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-debug_color = Color(0.941176, 0, 0.172549, 0.870588)
+debug_color = Color(0.941176, 0, 0.172549, 0.129412)
 
 [connection signal="body_entered" from="." to="." method="_on_Area2D_body_entered"]

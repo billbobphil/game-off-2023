@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bvlwvcb3m3xa5"]
+[gd_scene load_steps=7 format=3 uid="uid://bvlwvcb3m3xa5"]
 
 [ext_resource type="Script" path="res://player/Player.gd" id="1_6w1tq"]
 [ext_resource type="SpriteFrames" uid="uid://ckg4iwxfn0vtq" path="res://player/small-scale-sprite-frames.tres" id="3_q1m6u"]
 [ext_resource type="SpriteFrames" uid="uid://dfq6e7t54sn4r" path="res://player/large-scale-sprite-frames.tres" id="4_lo3i4"]
 [ext_resource type="SpriteFrames" uid="uid://c02cnh14dgri0" path="res://player/normal-scale-sprite-frames.tres" id="5_isqe2"]
+[ext_resource type="Texture2D" uid="uid://q58l36wgkloc" path="res://placeholder/art/large-circle.png" id="5_qk6tp"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_okpn0"]
 height = 26.0
@@ -28,3 +29,10 @@ shape = SubResource("CapsuleShape2D_okpn0")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("5_isqe2")
 animation = &"run"
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(2, 1)
+scale = Vector2(0.106626, 0.106626)
+energy = 0.8
+blend_mode = 2
+texture = ExtResource("5_qk6tp")
