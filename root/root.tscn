@@ -1,7 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://djd4loyuphb7b"]
+[gd_scene load_steps=7 format=3 uid="uid://djd4loyuphb7b"]
 
 [ext_resource type="PackedScene" uid="uid://dsjn2k6b48pjo" path="res://levels/level_one/level_one.tscn" id="2_rl4h1"]
 [ext_resource type="PackedScene" uid="uid://dxfxr1wwima4k" path="res://levels/level_two/level_two.tscn" id="3_2nj7d"]
+[ext_resource type="Theme" uid="uid://lmesfrfslv4p" path="res://fonts/rainy-hearts-font-theme.tres" id="4_2temy"]
+[ext_resource type="Script" path="res://hud/HUD.gd" id="4_rshjh"]
+[ext_resource type="Texture2D" uid="uid://hko51bie4a6j" path="res://hud/player-death-icon-32x32.png" id="5_mlvek"]
 [ext_resource type="Script" path="res://levels/LevelMounter.gd" id="6_ovqv7"]
 
 [node name="Root" type="Node2D"]
@@ -10,3 +13,19 @@
 position = Vector2(-1, 0)
 script = ExtResource("6_ovqv7")
 levelPaths = Array[PackedScene]([ExtResource("2_rl4h1"), ExtResource("3_2nj7d")])
+
+[node name="HUD" type="CanvasLayer" parent="."]
+script = ExtResource("4_rshjh")
+
+[node name="DeathCounterLabel" type="Label" parent="HUD"]
+offset_left = 37.0
+offset_top = 6.0
+offset_right = 77.0
+offset_bottom = 32.0
+theme = ExtResource("4_2temy")
+theme_override_font_sizes/font_size = 32
+text = "0"
+
+[node name="DeathCounterIcon" type="Sprite2D" parent="HUD"]
+position = Vector2(20, 19)
+texture = ExtResource("5_mlvek")

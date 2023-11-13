@@ -8,11 +8,8 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_okpn0"]
 height = 26.0
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_6w1tq")
-isDashEnabled = true
-isScaleUpEnabled = true
-isScaleDownEnabled = true
 normalSpriteFrames = ExtResource("5_isqe2")
 smallMass = 0.8
 smallSpriteFrames = ExtResource("3_q1m6u")

@@ -77,6 +77,9 @@ func _ready():
 	sprite.animation = "idle";
 	sprite.play();
 
+	for deathPlane in get_tree().get_nodes_in_group("deathPlanes"):
+		deathPlane.kill_player.connect(die);
+
 func initializeScaleDictionary():
 	var normalScale : Scale = Scale.new();
 	normalScale.spriteScale = normalSpriteScale;
@@ -254,3 +257,8 @@ func getDashDirection() -> Vector2:
 	direction.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	direction.y = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
 	return direction.normalized()
+
+func die(_body):
+	print("player should die");
+	self.queue_free()
+

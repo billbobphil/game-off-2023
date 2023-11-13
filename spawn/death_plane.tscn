@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://c6ogxchfr0k6q"]
+
+[ext_resource type="Script" path="res://spawn/death_plane.gd" id="1_koftm"]
+
+[node name="DeathPlane" type="Area2D" groups=["deathPlanes"]]
+script = ExtResource("1_koftm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+debug_color = Color(0.941176, 0, 0.172549, 0.870588)
+
+[connection signal="body_entered" from="." to="." method="_on_Area2D_body_entered"]
