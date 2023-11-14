@@ -1,12 +1,10 @@
 extends CanvasLayer
 
-var deathCounter = 0;
 @onready var deathCounterLabel = $DeathCounterLabel;
 
 func _ready():
-	for deathPlane in get_tree().get_nodes_in_group("deathPlanes"):
-		deathPlane.kill_player.connect(incrementDeathCounter);
+	for statTracker in get_tree().get_nodes_in_group("StatTracker"):
+		statTracker.death_count_changed.connect(incrementDeathCounter);
 
-func incrementDeathCounter(_body):
-	deathCounter += 1;
-	deathCounterLabel.text = str(deathCounter);
+func incrementDeathCounter(newCount):
+	deathCounterLabel.text = str(newCount);

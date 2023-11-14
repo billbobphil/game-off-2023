@@ -52,9 +52,11 @@ func _process(_delta):
 				if(!isDialogIndexTriggered[dialogIndex + 1]):
 					dialogIndex += 1;
 					setDialogText(dialogLines[dialogIndex]);
+					SoundManager.playDialogAccept($AudioStreamPlayer2D);
 			else:
 				isDialogActive = false;
 				setDialogText("");
+				SoundManager.playDialogAccept($AudioStreamPlayer2D);
 			setShouldShowDialogNext();
 
 func setDialogText(text : String):

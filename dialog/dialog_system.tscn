@@ -1,14 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://bbvbafsnytjt5"]
+[gd_scene load_steps=5 format=3 uid="uid://bbvbafsnytjt5"]
 
 [ext_resource type="Script" path="res://dialog/DialogSystem.gd" id="1_fji00"]
 [ext_resource type="Theme" uid="uid://lmesfrfslv4p" path="res://fonts/rainy-hearts-font-theme.tres" id="2_acycq"]
 [ext_resource type="SpriteFrames" uid="uid://bghxlls6lq468" path="res://dialog/next-icon-frames.tres" id="3_xmcmj"]
+[ext_resource type="AudioStream" uid="uid://5m7ak0bsmlma" path="res://genericSound/button-click.wav" id="4_oex2w"]
 
 [node name="DialogSystem" type="Node2D"]
 z_index = 1
 script = ExtResource("1_fji00")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
 
 [node name="DialogLabel" type="Label" parent="CanvasLayer"]
 offset_left = -171.0
@@ -41,3 +43,7 @@ text = "next"
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_oex2w")
+volume_db = -5.0

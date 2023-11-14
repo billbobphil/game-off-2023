@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://bhi2mmxdvhynu"]
+
+[ext_resource type="TileSet" uid="uid://d3xq0yrjv43oh" path="res://tilesets/background-tileset.tres" id="1_ae67m"]
+[ext_resource type="TileSet" uid="uid://b6cknjhe8hf2x" path="res://tilesets/grunge-tileset.tres" id="2_p6v1s"]
+[ext_resource type="PackedScene" uid="uid://72cl4kjth21x" path="res://camera/camera_manager.tscn" id="3_dua1a"]
+[ext_resource type="PackedScene" uid="uid://ch3m86tcv1vai" path="res://spawn/spawn_manager.tscn" id="4_ddnbo"]
+[ext_resource type="PackedScene" uid="uid://cccxqvtr3bkgo" path="res://levelEnd/level_end.tscn" id="5_6rckc"]
+[ext_resource type="PackedScene" uid="uid://dvp8xfxfsgpgw" path="res://levelEnd/level_summary_screen.tscn" id="5_txicx"]
+[ext_resource type="PackedScene" uid="uid://6h7um6j5ifdg" path="res://stats/stats.tscn" id="6_reyn1"]
+
+[node name="level_base" type="Node2D"]
+
+[node name="BackgroundTilemap" type="TileMap" parent="."]
+tile_set = ExtResource("1_ae67m")
+format = 2
+
+[node name="DecorativeTilemap" type="TileMap" parent="."]
+tile_set = ExtResource("1_ae67m")
+format = 2
+
+[node name="PlayableTilemap" type="TileMap" parent="."]
+tile_set = ExtResource("2_p6v1s")
+format = 2
+
+[node name="Torches" type="Node2D" parent="."]
+
+[node name="CameraManager" parent="." instance=ExtResource("3_dua1a")]
+
+[node name="SpawnManager" parent="." instance=ExtResource("4_ddnbo")]
+
+[node name="DeathPlanes" type="Node2D" parent="."]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.419608, 0.419608, 0.419608, 1)
+
+[node name="LevelEnd" parent="." instance=ExtResource("5_6rckc")]
+position = Vector2(-50, -50)
+
+[node name="level_summary_screen" parent="." instance=ExtResource("5_txicx")]
+visible = false
+
+[node name="Stats" parent="." instance=ExtResource("6_reyn1")]
+
+[connection signal="level_end" from="LevelEnd" to="Stats" method="onLevelEnd"]
+[connection signal="level_end" from="LevelEnd" to="level_summary_screen" method="_on_level_end"]

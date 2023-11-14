@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://djd4loyuphb7b"]
+[gd_scene load_steps=9 format=3 uid="uid://djd4loyuphb7b"]
 
 [ext_resource type="PackedScene" uid="uid://dsjn2k6b48pjo" path="res://levels/level_one/level_one.tscn" id="2_rl4h1"]
 [ext_resource type="PackedScene" uid="uid://dxfxr1wwima4k" path="res://levels/level_two/level_two.tscn" id="3_2nj7d"]
@@ -6,10 +6,12 @@
 [ext_resource type="Script" path="res://hud/HUD.gd" id="4_rshjh"]
 [ext_resource type="Texture2D" uid="uid://hko51bie4a6j" path="res://hud/player-death-icon-32x32.png" id="5_mlvek"]
 [ext_resource type="Script" path="res://levels/LevelMounter.gd" id="6_ovqv7"]
+[ext_resource type="AudioStream" uid="uid://px8mfp022k0g" path="res://player/sound/death.wav" id="7_0poe8"]
+[ext_resource type="AudioStream" uid="uid://b4tqvv6obhk72" path="res://music/Boss 1 - Looped - Modern.wav" id="8_kmug6"]
 
 [node name="Root" type="Node2D"]
 
-[node name="LevelMounter" type="Node2D" parent="."]
+[node name="LevelMounter" type="Node2D" parent="." groups=["LevelMounter"]]
 position = Vector2(-1, 0)
 script = ExtResource("6_ovqv7")
 levelPaths = Array[PackedScene]([ExtResource("2_rl4h1"), ExtResource("3_2nj7d")])
@@ -29,3 +31,17 @@ text = "0"
 [node name="DeathCounterIcon" type="Sprite2D" parent="HUD"]
 position = Vector2(20, 19)
 texture = ExtResource("5_mlvek")
+
+[node name="UniversalAvailableAudio" type="Node2D" parent="."]
+
+[node name="PlayerDeathPlayer" type="AudioStreamPlayer" parent="UniversalAvailableAudio"]
+stream = ExtResource("7_0poe8")
+volume_db = -3.0
+
+[node name="MusicPlayer" type="Node2D" parent="."]
+process_mode = 3
+
+[node name="Track_One" type="AudioStreamPlayer" parent="MusicPlayer"]
+stream = ExtResource("8_kmug6")
+volume_db = -20.0
+autoplay = true

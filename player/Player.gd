@@ -148,10 +148,15 @@ func _physics_process(delta):
 		if(sprite.animation != "run"):
 			sprite.animation = "run";
 			sprite.play();
+		if(is_on_floor()):
+			SoundManager.playFootsteps();
+		else:
+			SoundManager.stopFootsteps();
 	else:
 		if(sprite.animation != "idle"):
 			sprite.animation = "idle";
 			sprite.play();
+		SoundManager.stopFootsteps();
 
 	handleInputBufferTimer(delta);
 	handleDashTimer(delta);
@@ -172,6 +177,7 @@ func _physics_process(delta):
 func jump():
 	velocity.y = jumpVelocity
 	isJumping = true
+	SoundManager.playJump();
 
 func bufferredJump():
 	jump();
@@ -259,6 +265,6 @@ func getDashDirection() -> Vector2:
 	return direction.normalized()
 
 func die(_body):
-	print("player should die");
+	SoundManager.playDeath();
 	self.queue_free()
 

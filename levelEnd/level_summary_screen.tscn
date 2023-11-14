@@ -1,0 +1,113 @@
+[gd_scene load_steps=7 format=3 uid="uid://dvp8xfxfsgpgw"]
+
+[ext_resource type="Script" path="res://levelEnd/LevelSummaryScreen.gd" id="1_1sebh"]
+[ext_resource type="Texture2D" uid="uid://cyyia7eqvg21s" path="res://levelEnd/level-end-box.png" id="2_pigqk"]
+[ext_resource type="Theme" uid="uid://lmesfrfslv4p" path="res://fonts/rainy-hearts-font-theme.tres" id="3_t0275"]
+[ext_resource type="Texture2D" uid="uid://hko51bie4a6j" path="res://hud/player-death-icon-32x32.png" id="4_pyd5h"]
+[ext_resource type="Texture2D" uid="uid://x4m51g0cvkb8" path="res://levelEnd/clock-icon-32x32.png" id="5_kmwgc"]
+[ext_resource type="StyleBox" uid="uid://d3vmrfplttlmu" path="res://genericUi/button-stylebox-texture.tres" id="6_wbgy0"]
+
+[node name="level_summary_screen" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_1sebh")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(316.688, 178.375)
+scale = Vector2(2.97949, 2.72461)
+texture = ExtResource("2_pigqk")
+
+[node name="Title" type="Label" parent="."]
+offset_left = 169.688
+offset_top = 47.3749
+offset_right = 463.688
+offset_bottom = 95.3749
+theme = ExtResource("3_t0275")
+theme_override_colors/font_color = Color(0.949219, 0.75, 0.804688, 1)
+theme_override_font_sizes/font_size = 48
+text = "Stage Complete"
+
+[node name="Deaths" type="Node2D" parent="."]
+position = Vector2(261.688, 180.375)
+
+[node name="Sprite2D" type="Sprite2D" parent="Deaths"]
+position = Vector2(0, -1)
+texture = ExtResource("4_pyd5h")
+
+[node name="Label" type="Label" parent="Deaths"]
+offset_left = 18.0
+offset_top = -16.0
+offset_right = 58.0
+offset_bottom = 17.0
+theme = ExtResource("3_t0275")
+theme_override_font_sizes/font_size = 32
+text = "0"
+
+[node name="Timer" type="Node2D" parent="."]
+position = Vector2(260.688, 129.375)
+
+[node name="Sprite2D" type="Sprite2D" parent="Timer"]
+texture = ExtResource("5_kmwgc")
+
+[node name="Minutes" type="Label" parent="Timer"]
+offset_left = 21.0
+offset_top = -14.0
+offset_right = 61.0
+offset_bottom = 19.0
+theme = ExtResource("3_t0275")
+theme_override_font_sizes/font_size = 32
+text = "00
+"
+
+[node name="Minutes-Seconds-Colon" type="Label" parent="Timer"]
+offset_left = 51.0
+offset_top = -16.0
+offset_right = 91.0
+offset_bottom = 17.0
+theme = ExtResource("3_t0275")
+theme_override_font_sizes/font_size = 32
+text = ":
+"
+
+[node name="Seconds" type="Label" parent="Timer"]
+offset_left = 56.0
+offset_top = -14.0
+offset_right = 96.0
+offset_bottom = 19.0
+theme = ExtResource("3_t0275")
+theme_override_font_sizes/font_size = 32
+text = "00
+"
+
+[node name="Seconds-Milliseconds-Colon" type="Label" parent="Timer"]
+offset_left = 85.0
+offset_top = -16.0
+offset_right = 125.0
+offset_bottom = 17.0
+theme = ExtResource("3_t0275")
+theme_override_font_sizes/font_size = 32
+text = ":
+"
+
+[node name="Milliseconds" type="Label" parent="Timer"]
+offset_left = 91.0
+offset_top = -14.0
+offset_right = 137.0
+offset_bottom = 19.0
+theme = ExtResource("3_t0275")
+theme_override_font_sizes/font_size = 32
+text = "000"
+
+[node name="Button" type="Button" parent="."]
+offset_left = 210.688
+offset_top = 221.375
+offset_right = 431.688
+offset_bottom = 293.375
+theme = ExtResource("3_t0275")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("6_wbgy0")
+theme_override_styles/hover = ExtResource("6_wbgy0")
+theme_override_styles/pressed = ExtResource("6_wbgy0")
+text = "CONTINUE"
+
+[connection signal="pressed" from="Button" to="." method="on_next_level_button_pressed"]

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://6h7um6j5ifdg"]
+
+[ext_resource type="Script" path="res://stats/StatsTracker.gd" id="1_ud1wm"]
+
+[node name="Stats" type="Node2D" groups=["StatTracker"]]
+script = ExtResource("1_ud1wm")
+
+[node name="Timer" type="Timer" parent="."]

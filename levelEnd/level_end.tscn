@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://cccxqvtr3bkgo"]
+
+[ext_resource type="SpriteFrames" uid="uid://17kj4430c0qm" path="res://levels/level_end/level-end-sprite-frames.tres" id="1_k6ync"]
+[ext_resource type="Texture2D" uid="uid://q58l36wgkloc" path="res://placeholder/art/large-circle.png" id="2_5vl64"]
+[ext_resource type="Script" path="res://levelEnd/LevelEnd.gd" id="2_qmf01"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d5jqb"]
+radius = 13.0
+
+[node name="LevelEnd" type="AnimatedSprite2D"]
+sprite_frames = ExtResource("1_k6ync")
+autoplay = "default"
+frame = 6
+frame_progress = 0.710482
+script = ExtResource("2_qmf01")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(0.0972801, 0.0972801)
+energy = 0.8
+blend_mode = 2
+texture = ExtResource("2_5vl64")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_d5jqb")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dsjn2k6b48pjo"]
+[gd_scene load_steps=31 format=3 uid="uid://dsjn2k6b48pjo"]
 
 [ext_resource type="TileSet" uid="uid://d3xq0yrjv43oh" path="res://tilesets/background-tileset.tres" id="1_utq52"]
 [ext_resource type="TileSet" uid="uid://b6cknjhe8hf2x" path="res://tilesets/grunge-tileset.tres" id="1_xyjxt"]
@@ -11,9 +11,10 @@
 [ext_resource type="PackedScene" uid="uid://5yoxie3ib3ml" path="res://spawn/player_spawn.tscn" id="5_fqpne"]
 [ext_resource type="PackedScene" uid="uid://c6ogxchfr0k6q" path="res://spawn/death_plane.tscn" id="7_fagc8"]
 [ext_resource type="Shape2D" uid="uid://qtj58wcxwpao" path="res://levels/level_one/full-screen-horizontal-death-plane-shape.tres" id="9_x0wfs"]
-[ext_resource type="SpriteFrames" uid="uid://17kj4430c0qm" path="res://levels/level_end/level-end-sprite-frames.tres" id="10_p3feq"]
-[ext_resource type="Texture2D" uid="uid://q58l36wgkloc" path="res://placeholder/art/large-circle.png" id="14_8s0cj"]
+[ext_resource type="PackedScene" uid="uid://cccxqvtr3bkgo" path="res://levelEnd/level_end.tscn" id="13_ts8sx"]
+[ext_resource type="PackedScene" uid="uid://dvp8xfxfsgpgw" path="res://levelEnd/level_summary_screen.tscn" id="14_g3u1g"]
 [ext_resource type="PackedScene" uid="uid://m58t4vglxduu" path="res://torch/torch.tscn" id="14_hfunb"]
+[ext_resource type="PackedScene" uid="uid://6h7um6j5ifdg" path="res://stats/stats.tscn" id="15_uiy0m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yjblk"]
 size = Vector2(40.0343, 124.514)
@@ -31,7 +32,7 @@ size = Vector2(30.0343, 99.4102)
 size = Vector2(28.7716, 238.986)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vc2fl"]
-size = Vector2(48.8057, 238.986)
+size = Vector2(47.8672, 256.057)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ra4dn"]
 size = Vector2(76, 92)
@@ -43,13 +44,16 @@ size = Vector2(78, 142)
 size = Vector2(28, 95)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6my1m"]
-size = Vector2(33, 241)
+size = Vector2(33, 285.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8ddgg"]
 size = Vector2(89, 114)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qbswc"]
 size = Vector2(81, 95.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g2uva"]
+size = Vector2(65, 252)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qk5ek"]
 size = Vector2(428, 52)
@@ -101,6 +105,9 @@ position = Vector2(2771.39, 570.442)
 [node name="Torch7" parent="Torches" instance=ExtResource("14_hfunb")]
 position = Vector2(3371, 769)
 
+[node name="Torch8" parent="Torches" instance=ExtResource("14_hfunb")]
+position = Vector2(3579, 820)
+
 [node name="CameraManager" parent="." instance=ExtResource("4_qm486")]
 
 [node name="Screen1" parent="CameraManager" instance=ExtResource("3_sjwj8")]
@@ -139,7 +146,7 @@ position = Vector2(1906, 292)
 newXPosition = 1600.0
 
 [node name="CollisionShape2D" parent="CameraManager/Screen-3-Right" index="0"]
-position = Vector2(-4.38672, -106.439)
+position = Vector2(-11.2629, -105.435)
 shape = SubResource("RectangleShape2D_f6554")
 
 [node name="Screen-4-Left" parent="CameraManager" instance=ExtResource("3_sjwj8")]
@@ -148,7 +155,8 @@ newXPosition = 2240.0
 newYPosition = 400.0
 
 [node name="CollisionShape2D" parent="CameraManager/Screen-4-Left" index="0"]
-position = Vector2(9.38586, -98.4061)
+position = Vector2(9.8551, -106.941)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_vc2fl")
 
 [node name="Screen-4-Right" parent="CameraManager" instance=ExtResource("3_sjwj8")]
@@ -170,7 +178,7 @@ position = Vector2(-6.57007, -95.9199)
 shape = ExtResource("4_0ql48")
 
 [node name="Screen-5-Right" parent="CameraManager" instance=ExtResource("3_sjwj8")]
-position = Vector2(3180, 758.094)
+position = Vector2(3175, 758)
 newXPosition = 2880.0
 newYPosition = 650.0
 
@@ -215,7 +223,7 @@ shape = SubResource("RectangleShape2D_twpu7")
 position = Vector2(1942, 292)
 
 [node name="CollisionShape2D" parent="SpawnManager/ScreenFourSpawn/Area2D" index="0"]
-position = Vector2(0, -89)
+position = Vector2(0, -111.25)
 shape = SubResource("RectangleShape2D_6my1m")
 
 [node name="ScreenFiveSpawn" parent="SpawnManager" instance=ExtResource("5_fqpne")]
@@ -286,6 +294,30 @@ position = Vector2(-405, 107)
 shape = SubResource("RectangleShape2D_qbswc")
 debug_color = Color(0.454902, 0.231373, 0.792157, 0.419608)
 
+[node name="ScreenSixOwl" parent="." instance=ExtResource("5_e48ce")]
+position = Vector2(3573, 786.105)
+
+[node name="DialogSystem" parent="ScreenSixOwl" index="1"]
+dialogLines = Array[String](["Dare you to touch it."])
+isDialogIndexTriggered = Array[bool]([false])
+
+[node name="DialogLabel" parent="ScreenSixOwl/DialogSystem/CanvasLayer" index="0"]
+offset_left = 3406.0
+offset_top = 777.0
+offset_right = 3555.0
+offset_bottom = 816.0
+
+[node name="NextIcon" parent="ScreenSixOwl/DialogSystem/CanvasLayer" index="1"]
+position = Vector2(3481, 832)
+
+[node name="DialogTrigger" type="Area2D" parent="ScreenSixOwl"]
+position = Vector2(-246, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScreenSixOwl/DialogTrigger"]
+position = Vector2(-7.5, 19.8948)
+shape = SubResource("RectangleShape2D_g2uva")
+debug_color = Color(0.741176, 0.301961, 0.878431, 0.419608)
+
 [node name="DeathPlanes" type="Node2D" parent="."]
 
 [node name="Screen2" parent="DeathPlanes" instance=ExtResource("7_fagc8")]
@@ -316,28 +348,22 @@ position = Vector2(2860.48, 855.731)
 position = Vector2(19.5154, 0)
 shape = ExtResource("9_x0wfs")
 
-[node name="TestCamera" type="Camera2D" parent="."]
-position = Vector2(3520, 780)
-
-[node name="LevelEnd" type="AnimatedSprite2D" parent="."]
-position = Vector2(3719, 883)
-sprite_frames = ExtResource("10_p3feq")
-autoplay = "default"
-frame = 6
-frame_progress = 0.710482
-
-[node name="PointLight2D" type="PointLight2D" parent="LevelEnd"]
-scale = Vector2(0.0972801, 0.0972801)
-energy = 0.8
-blend_mode = 2
-texture = ExtResource("14_8s0cj")
+[node name="LevelEnd" parent="." instance=ExtResource("13_ts8sx")]
+position = Vector2(3723, 886)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.419608, 0.419608, 0.419608, 1)
 
+[node name="level_summary_screen" parent="." node_paths=PackedStringArray("statsTracker") instance=ExtResource("14_g3u1g")]
+statsTracker = NodePath("../Stats")
+
+[node name="Stats" parent="." instance=ExtResource("15_uiy0m")]
+
 [connection signal="body_entered" from="ScreenOneOwl/MovementSuccessTrigger" to="ScreenOneOwl/DialogSystem" method="oneTimeTriggerDialogChange" binds= [2]]
 [connection signal="body_entered" from="ScreenOneOwl/StartDialogTrigger" to="ScreenOneOwl/DialogSystem" method="startDialogTrigger"]
 [connection signal="body_entered" from="ScreenTwoOwl/StartDialogTrigger" to="ScreenTwoOwl/DialogSystem" method="startDialogTrigger"]
+[connection signal="body_entered" from="ScreenSixOwl/DialogTrigger" to="ScreenSixOwl/DialogSystem" method="startDialogTrigger"]
+[connection signal="level_end" from="LevelEnd" to="level_summary_screen" method="_on_level_end"]
 
 [editable path="CameraManager/Screen1"]
 [editable path="CameraManager/Screen2-Left"]
@@ -360,7 +386,10 @@ color = Color(0.419608, 0.419608, 0.419608, 1)
 [editable path="ScreenOneOwl/DialogSystem"]
 [editable path="ScreenTwoOwl"]
 [editable path="ScreenTwoOwl/DialogSystem"]
+[editable path="ScreenSixOwl"]
+[editable path="ScreenSixOwl/DialogSystem"]
 [editable path="DeathPlanes/Screen2"]
 [editable path="DeathPlanes/Screen3"]
 [editable path="DeathPlanes/Screen4"]
 [editable path="DeathPlanes/Screen5"]
+[editable path="level_summary_screen"]

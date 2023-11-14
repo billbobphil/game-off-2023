@@ -10,6 +10,7 @@ func _ready():
 func nextLevel():
 	currentLevel.queue_free();
 	currentLevelIndex += 1;
+	get_tree().paused = false;
 	loadLevel();
 
 func goToLevelIndex(index):
