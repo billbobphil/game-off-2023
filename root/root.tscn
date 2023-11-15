@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://hko51bie4a6j" path="res://hud/player-death-icon-32x32.png" id="5_mlvek"]
 [ext_resource type="Script" path="res://levels/LevelMounter.gd" id="6_ovqv7"]
 [ext_resource type="AudioStream" uid="uid://px8mfp022k0g" path="res://player/sound/death.wav" id="7_0poe8"]
-[ext_resource type="AudioStream" uid="uid://b4tqvv6obhk72" path="res://music/Boss 1 - Looped - Modern.wav" id="8_kmug6"]
+[ext_resource type="AudioStream" uid="uid://dre80i0sw76x2" path="res://music/8-Bit_Stage_From The Depths (loop).wav" id="8_4jvpk"]
 
 [node name="Root" type="Node2D"]
 
@@ -42,6 +42,6 @@ volume_db = -3.0
 process_mode = 3
 
 [node name="Track_One" type="AudioStreamPlayer" parent="MusicPlayer"]
-stream = ExtResource("8_kmug6")
+stream = ExtResource("8_4jvpk")
 volume_db = -20.0
 autoplay = true

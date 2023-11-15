@@ -14,9 +14,7 @@ func _ready():
 		spawnPoint.change_player_spawn.connect(assignNewSpawnPoint);
 
 func assignNewSpawnPoint(newSpawnPoint : PlayerSpawn):
-	print("player spawn changed");
 	activeSpawnPoint = newSpawnPoint;
 
 func respawnPlayer(_body):
-	print("trying to respawn player");
 	activeSpawnPoint.spawnPlayer(get_parent(), playerScene);

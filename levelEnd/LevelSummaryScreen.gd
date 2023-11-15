@@ -31,7 +31,6 @@ func showLevelEndScreen():
 	millisecondsText.text = "%03d" % [milliseconds];
 
 func on_next_level_button_pressed():
-	print("go to next level");
 	get_tree().call_group("LevelMounter", "nextLevel");
 
 

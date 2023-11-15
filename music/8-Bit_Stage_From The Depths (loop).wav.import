@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dre80i0sw76x2"
+path="res://.godot/imported/8-Bit_Stage_From The Depths (loop).wav-1be929739fe5a0f8d618d8655a05cfd1.sample"
+
+[deps]
+
+source_file="res://music/8-Bit_Stage_From The Depths (loop).wav"
+dest_files=["res://.godot/imported/8-Bit_Stage_From The Depths (loop).wav-1be929739fe5a0f8d618d8655a05cfd1.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

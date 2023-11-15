@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://dsjn2k6b48pjo"]
+[gd_scene load_steps=42 format=3 uid="uid://dsjn2k6b48pjo"]
 
 [ext_resource type="TileSet" uid="uid://d3xq0yrjv43oh" path="res://tilesets/background-tileset.tres" id="1_utq52"]
 [ext_resource type="TileSet" uid="uid://b6cknjhe8hf2x" path="res://tilesets/grunge-tileset.tres" id="1_xyjxt"]
@@ -11,10 +11,21 @@
 [ext_resource type="PackedScene" uid="uid://5yoxie3ib3ml" path="res://spawn/player_spawn.tscn" id="5_fqpne"]
 [ext_resource type="PackedScene" uid="uid://c6ogxchfr0k6q" path="res://spawn/death_plane.tscn" id="7_fagc8"]
 [ext_resource type="Shape2D" uid="uid://qtj58wcxwpao" path="res://levels/level_one/full-screen-horizontal-death-plane-shape.tres" id="9_x0wfs"]
+[ext_resource type="Texture2D" uid="uid://g11tyssx0d3k" path="res://genericUi/inputIcons/keyboard/Enter_Key_Light.png" id="11_qyfq7"]
+[ext_resource type="Texture2D" uid="uid://c1li7cbchpfl7" path="res://genericUi/inputIcons/keyboard/D_Key_Light.png" id="12_ffmms"]
+[ext_resource type="Texture2D" uid="uid://dm34c523o5sue" path="res://genericUi/inputIcons/playstation/PS5_Square.png" id="12_xxobf"]
+[ext_resource type="Texture2D" uid="uid://rq2jjq63dyyt" path="res://genericUi/inputIcons/xbox/XboxSeriesX_X.png" id="13_njm2m"]
 [ext_resource type="PackedScene" uid="uid://cccxqvtr3bkgo" path="res://levelEnd/level_end.tscn" id="13_ts8sx"]
+[ext_resource type="Texture2D" uid="uid://o0bsqndyj2v2" path="res://genericUi/inputIcons/playstation/PS5_Left_Stick.png" id="14_2akqh"]
 [ext_resource type="PackedScene" uid="uid://dvp8xfxfsgpgw" path="res://levelEnd/level_summary_screen.tscn" id="14_g3u1g"]
 [ext_resource type="PackedScene" uid="uid://m58t4vglxduu" path="res://torch/torch.tscn" id="14_hfunb"]
 [ext_resource type="PackedScene" uid="uid://6h7um6j5ifdg" path="res://stats/stats.tscn" id="15_uiy0m"]
+[ext_resource type="Texture2D" uid="uid://crn36co4medqw" path="res://genericUi/inputIcons/xbox/XboxSeriesX_Left_Stick.png" id="16_gqpow"]
+[ext_resource type="Texture2D" uid="uid://d2t1tvhigsobq" path="res://genericUi/inputIcons/keyboard/Space_Key_Light.png" id="17_mgxdf"]
+[ext_resource type="Texture2D" uid="uid://cm4tdf5hqdmnq" path="res://genericUi/inputIcons/playstation/PS5_Cross.png" id="18_lklj5"]
+[ext_resource type="Texture2D" uid="uid://bava1cjf32aky" path="res://genericUi/inputIcons/xbox/XboxSeriesX_A.png" id="19_fkklp"]
+[ext_resource type="Texture2D" uid="uid://csxx20b35cpt8" path="res://genericUi/controller-32x32.png" id="23_f0ihm"]
+[ext_resource type="Theme" uid="uid://lmesfrfslv4p" path="res://fonts/rainy-hearts-font-theme.tres" id="23_ylk5f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yjblk"]
 size = Vector2(40.0343, 124.514)
@@ -156,7 +167,6 @@ newYPosition = 400.0
 
 [node name="CollisionShape2D" parent="CameraManager/Screen-4-Left" index="0"]
 position = Vector2(9.8551, -106.941)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_vc2fl")
 
 [node name="Screen-4-Right" parent="CameraManager" instance=ExtResource("3_sjwj8")]
@@ -244,8 +254,11 @@ shape = ExtResource("4_0ql48")
 position = Vector2(499, 168)
 
 [node name="DialogSystem" parent="ScreenOneOwl" index="1"]
-dialogLines = Array[String](["Hey! [Enter/X-button to Continue]", "Why don't you walk over here? [WASD or Analog/D-Pad]", "Walking isn't so hard right?", "Actually.. I wouldn't know.."])
+dialogLines = Array[String](["Hey!", "Why don't you walk over here?", "Walking isn't so hard right?", "Actually.. I wouldn't know.."])
 isDialogIndexTriggered = Array[bool]([false, false, true, false])
+dialogInputIconPC = Array[Texture]([ExtResource("11_qyfq7"), ExtResource("12_ffmms"), null, null])
+dialogInputIconPlaystation = Array[Texture]([ExtResource("12_xxobf"), ExtResource("14_2akqh"), null, null])
+dialogInputIconXbox = Array[Texture]([ExtResource("13_njm2m"), ExtResource("16_gqpow"), null, null])
 
 [node name="DialogLabel" parent="ScreenOneOwl/DialogSystem/CanvasLayer" index="0"]
 offset_left = 320.0
@@ -254,7 +267,10 @@ offset_right = 469.0
 offset_bottom = 197.0
 
 [node name="NextIcon" parent="ScreenOneOwl/DialogSystem/CanvasLayer" index="1"]
-position = Vector2(395, 213)
+position = Vector2(498, 202)
+
+[node name="InputIcon" parent="ScreenOneOwl/DialogSystem/CanvasLayer" index="2"]
+position = Vector2(424, 216)
 
 [node name="MovementSuccessTrigger" type="Area2D" parent="ScreenOneOwl"]
 
@@ -274,17 +290,23 @@ debug_color = Color(0.796078, 0.368627, 0.54902, 0.419608)
 position = Vector2(1012, 151)
 
 [node name="DialogSystem" parent="ScreenTwoOwl" index="1"]
-dialogLines = Array[String](["Can you jump?", "[Spacebar/A-button] to jump, holding the button will jump higher."])
+dialogLines = Array[String](["Can you jump?", "Holding the button will jump higher."])
 isDialogIndexTriggered = Array[bool]([false, false])
+dialogInputIconPC = Array[Texture]([ExtResource("17_mgxdf"), null])
+dialogInputIconPlaystation = Array[Texture]([ExtResource("18_lklj5"), null])
+dialogInputIconXbox = Array[Texture]([ExtResource("19_fkklp"), null])
 
 [node name="DialogLabel" parent="ScreenTwoOwl/DialogSystem/CanvasLayer" index="0"]
-offset_left = 843.0
+offset_left = 830.0
 offset_top = 140.0
-offset_right = 992.0
+offset_right = 979.0
 offset_bottom = 179.0
 
 [node name="NextIcon" parent="ScreenTwoOwl/DialogSystem/CanvasLayer" index="1"]
-position = Vector2(1028, 183)
+position = Vector2(1013, 183)
+
+[node name="InputIcon" parent="ScreenTwoOwl/DialogSystem/CanvasLayer" index="2"]
+position = Vector2(950, 120)
 
 [node name="StartDialogTrigger" type="Area2D" parent="ScreenTwoOwl"]
 position = Vector2(78, 17)
@@ -309,6 +331,9 @@ offset_bottom = 816.0
 
 [node name="NextIcon" parent="ScreenSixOwl/DialogSystem/CanvasLayer" index="1"]
 position = Vector2(3481, 832)
+
+[node name="InputIcon" parent="ScreenSixOwl/DialogSystem/CanvasLayer" index="2"]
+visible = false
 
 [node name="DialogTrigger" type="Area2D" parent="ScreenSixOwl"]
 position = Vector2(-246, 0)
@@ -355,9 +380,26 @@ position = Vector2(3723, 886)
 color = Color(0.419608, 0.419608, 0.419608, 1)
 
 [node name="level_summary_screen" parent="." node_paths=PackedStringArray("statsTracker") instance=ExtResource("14_g3u1g")]
+visible = false
 statsTracker = NodePath("../Stats")
 
 [node name="Stats" parent="." instance=ExtResource("15_uiy0m")]
+
+[node name="GamepadRecommendedCanvas" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="Label" type="Label" parent="GamepadRecommendedCanvas"]
+offset_left = 199.0
+offset_top = 114.0
+offset_right = 352.0
+offset_bottom = 132.0
+theme = ExtResource("23_ylk5f")
+text = "Gamepad Recommended"
+
+[node name="Sprite2D" type="Sprite2D" parent="GamepadRecommendedCanvas"]
+position = Vector2(268, 71)
+scale = Vector2(3.875, 3.875)
+texture = ExtResource("23_f0ihm")
 
 [connection signal="body_entered" from="ScreenOneOwl/MovementSuccessTrigger" to="ScreenOneOwl/DialogSystem" method="oneTimeTriggerDialogChange" binds= [2]]
 [connection signal="body_entered" from="ScreenOneOwl/StartDialogTrigger" to="ScreenOneOwl/DialogSystem" method="startDialogTrigger"]

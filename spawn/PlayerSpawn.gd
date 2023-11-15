@@ -10,8 +10,6 @@ func spawnPlayer(levelNode : Node, playerScene):
 	createdPlayer.position = position;
 
 func _body_entered(body):
-	print("body entered spawn point");
 	if body.is_in_group("Player"):
-		print("player entered spawn point");
 		emit_signal("change_player_spawn", self);
 	
