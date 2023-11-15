@@ -17,4 +17,5 @@ func assignNewSpawnPoint(newSpawnPoint : PlayerSpawn):
 	activeSpawnPoint = newSpawnPoint;
 
 func respawnPlayer(_body):
+	await get_tree().create_timer(.3).timeout;
 	activeSpawnPoint.spawnPlayer(get_parent(), playerScene);

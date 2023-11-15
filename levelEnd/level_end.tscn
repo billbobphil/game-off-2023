@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cccxqvtr3bkgo"]
+[gd_scene load_steps=6 format=3 uid="uid://cccxqvtr3bkgo"]
 
 [ext_resource type="SpriteFrames" uid="uid://17kj4430c0qm" path="res://levels/level_end/level-end-sprite-frames.tres" id="1_k6ync"]
 [ext_resource type="Texture2D" uid="uid://q58l36wgkloc" path="res://placeholder/art/large-circle.png" id="2_5vl64"]
 [ext_resource type="Script" path="res://levelEnd/LevelEnd.gd" id="2_qmf01"]
+[ext_resource type="AudioStream" uid="uid://gg01u1cq6n1a" path="res://levelEnd/gloomy-aura.wav" id="4_ya5vc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d5jqb"]
 radius = 13.0
@@ -24,5 +25,10 @@ texture = ExtResource("2_5vl64")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_d5jqb")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_ya5vc")
+autoplay = true
+max_distance = 640.0
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]
