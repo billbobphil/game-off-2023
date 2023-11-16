@@ -13,7 +13,6 @@ position = Vector2(0, 180)
 
 [node name="CollisionShape2D" parent="Left" index="0"]
 position = Vector2(12.2757, 0)
-scale = Vector2(1, 1)
 shape = ExtResource("3_qxn1i")
 
 [node name="Right" parent="." instance=ExtResource("2_3k7j7")]
