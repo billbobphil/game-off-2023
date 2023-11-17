@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var levelPaths : Array[PackedScene];
-var currentLevelIndex : int = 0;
+@export var currentLevelIndex : int = 0;
 var currentLevel : Node2D;
 
 func _ready():

@@ -19,7 +19,6 @@ func _input(event):
 			changeInputType(InputType.XBOX);
 	elif event is InputEventKey or event is InputEventMouseMotion or event is InputEventMouseButton:
 		changeInputType(InputType.KEYBOARD);
-	print(currentInputType);
 
 func changeInputType(inputType : InputType):
 	if(currentInputType != inputType):

@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://djd4loyuphb7b"]
 
 [ext_resource type="PackedScene" uid="uid://dsjn2k6b48pjo" path="res://levels/level_one/level_one.tscn" id="2_rl4h1"]
-[ext_resource type="PackedScene" uid="uid://dxfxr1wwima4k" path="res://levels/level_two/level_two.tscn" id="3_2nj7d"]
+[ext_resource type="PackedScene" uid="uid://dxfmrc6ytevvf" path="res://levels/level_two/level_two.tscn" id="3_2nj7d"]
 [ext_resource type="Theme" uid="uid://lmesfrfslv4p" path="res://fonts/rainy-hearts-font-theme.tres" id="4_2temy"]
 [ext_resource type="Script" path="res://hud/HUD.gd" id="4_rshjh"]
 [ext_resource type="Texture2D" uid="uid://hko51bie4a6j" path="res://hud/player-death-icon-32x32.png" id="5_mlvek"]
@@ -15,6 +15,7 @@
 position = Vector2(-1, 0)
 script = ExtResource("6_ovqv7")
 levelPaths = Array[PackedScene]([ExtResource("2_rl4h1"), ExtResource("3_2nj7d")])
+currentLevelIndex = 1
 
 [node name="HUD" type="CanvasLayer" parent="."]
 script = ExtResource("4_rshjh")
@@ -44,4 +45,3 @@ process_mode = 3
 [node name="Track_One" type="AudioStreamPlayer" parent="MusicPlayer"]
 stream = ExtResource("8_4jvpk")
 volume_db = -20.0
-autoplay = true

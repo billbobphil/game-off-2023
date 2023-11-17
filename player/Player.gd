@@ -8,10 +8,10 @@ class_name Player
 @export_group("")
 var mass : float = 1.0;
 
-@export_group("Ability Flags")
-@export var isDashEnabled : bool = false;
-@export var isScaleUpEnabled : bool = false;
-@export var isScaleDownEnabled : bool = false;
+# @export_group("Ability Flags")
+# @export var isDashEnabled : bool = false;
+# @export var isScaleUpEnabled : bool = false;
+# @export var isScaleDownEnabled : bool = false;
 
 @export_group("Scale Properties")
 @export_subgroup("Normal Scale")
@@ -103,10 +103,10 @@ func initializeScaleDictionary():
 	scaleDictionary[Scales.LARGE] = largeScale;
 
 func _process(_delta):
-	if(isScaleUpEnabled && Input.is_action_just_pressed("scale_up")):
+	if(AbilityFlags.isScaleUpEnabled && Input.is_action_just_pressed("scale_up")):
 		scaleUp();
 
-	if(isScaleDownEnabled && Input.is_action_just_pressed("scale_down")):
+	if(AbilityFlags.isScaleDownEnabled && Input.is_action_just_pressed("scale_down")):
 		scaleDown();
 
 func scaleUp():
@@ -242,7 +242,7 @@ func jumpInputHandler():
 		isInputBuffered = true;
 
 func dashInputHandler():
-	if(isDashEnabled && canDash && !isDashing && Input.is_action_just_pressed("dash")):
+	if(AbilityFlags.isDashEnabled && canDash && !isDashing && Input.is_action_just_pressed("dash")):
 		beginDash();
 
 func beginDash():

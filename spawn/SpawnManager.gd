@@ -6,6 +6,8 @@ class_name SpawnManager
 var playerScene = preload("res://player/player.tscn");
 
 func _ready():
+	if(activeSpawnPoint == null):
+		activeSpawnPoint = get_tree().get_nodes_in_group("spawnPoints")[0];
 	activeSpawnPoint.spawnPlayer(get_parent(), playerScene);
 	for deathPlane in get_tree().get_nodes_in_group("deathPlanes"):
 		deathPlane.kill_player.connect(respawnPlayer);

@@ -1,0 +1,89 @@
+[gd_scene load_steps=14 format=3 uid="uid://bjv8ke3dif1id"]
+
+[ext_resource type="Texture2D" uid="uid://bmksfpdtfh4ht" path="res://abilityUnlocks/ability-pickup-64x64.png" id="1_pw2wf"]
+[ext_resource type="Script" path="res://abilityUnlocks/AbilityPickup.gd" id="2_8n0to"]
+[ext_resource type="Texture2D" uid="uid://q58l36wgkloc" path="res://placeholder/art/large-circle.png" id="3_2xvfx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rrmv8"]
+atlas = ExtResource("1_pw2wf")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rfo4d"]
+atlas = ExtResource("1_pw2wf")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eqvss"]
+atlas = ExtResource("1_pw2wf")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ta5c2"]
+atlas = ExtResource("1_pw2wf")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a00kd"]
+atlas = ExtResource("1_pw2wf")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ld3w"]
+atlas = ExtResource("1_pw2wf")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lmp8i"]
+atlas = ExtResource("1_pw2wf")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4agrw"]
+atlas = ExtResource("1_pw2wf")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0pa2x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rrmv8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rfo4d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eqvss")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ta5c2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a00kd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ld3w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lmp8i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4agrw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xtd0e"]
+radius = 23.3452
+
+[node name="AbilityPickup" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_0pa2x")
+autoplay = "default"
+script = ExtResource("2_8n0to")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(0.0969907, 0.100794)
+blend_mode = 2
+texture = ExtResource("3_2xvfx")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_xtd0e")
+
+[connection signal="body_entered" from="Area2D" to="." method="giveAbility"]
