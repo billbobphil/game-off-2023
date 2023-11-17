@@ -253,6 +253,7 @@ func beginDash():
 	dashTimer = 0.0;
 	dashCooldownTimer = 0.0;
 	shouldFall = true;
+	SoundManager.playDash();
 
 func endDash():
 	isDashing = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://djd4loyuphb7b"]
+[gd_scene load_steps=12 format=3 uid="uid://djd4loyuphb7b"]
 
 [ext_resource type="PackedScene" uid="uid://dsjn2k6b48pjo" path="res://levels/level_one/level_one.tscn" id="2_rl4h1"]
 [ext_resource type="PackedScene" uid="uid://dxfmrc6ytevvf" path="res://levels/level_two/level_two.tscn" id="3_2nj7d"]
@@ -8,6 +8,9 @@
 [ext_resource type="Script" path="res://levels/LevelMounter.gd" id="6_ovqv7"]
 [ext_resource type="AudioStream" uid="uid://px8mfp022k0g" path="res://player/sound/death.wav" id="7_0poe8"]
 [ext_resource type="AudioStream" uid="uid://dre80i0sw76x2" path="res://music/8-Bit_Stage_From The Depths (loop).wav" id="8_4jvpk"]
+[ext_resource type="AudioStream" uid="uid://cagnuh0m17fkc" path="res://abilityUnlocks/dramatic-zoom.mp3" id="8_5xvi2"]
+[ext_resource type="AudioStream" uid="uid://5m7ak0bsmlma" path="res://genericSound/button-click.wav" id="9_v3ha5"]
+[ext_resource type="AudioStream" uid="uid://c6hqtbin1q7bv" path="res://player/sound/dash.wav" id="10_g6ral"]
 
 [node name="Root" type="Node2D"]
 
@@ -39,9 +42,20 @@ texture = ExtResource("5_mlvek")
 stream = ExtResource("7_0poe8")
 volume_db = -3.0
 
+[node name="AbilityUnlock" type="AudioStreamPlayer" parent="UniversalAvailableAudio"]
+stream = ExtResource("8_5xvi2")
+
+[node name="InteractSuccessful" type="AudioStreamPlayer" parent="UniversalAvailableAudio"]
+stream = ExtResource("9_v3ha5")
+volume_db = -5.0
+
+[node name="DashPlayer" type="AudioStreamPlayer" parent="UniversalAvailableAudio"]
+stream = ExtResource("10_g6ral")
+
 [node name="MusicPlayer" type="Node2D" parent="."]
 process_mode = 3
 
 [node name="Track_One" type="AudioStreamPlayer" parent="MusicPlayer"]
 stream = ExtResource("8_4jvpk")
 volume_db = -20.0
+autoplay = true

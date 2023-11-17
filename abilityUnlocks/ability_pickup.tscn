@@ -1,8 +1,14 @@
-[gd_scene load_steps=14 format=3 uid="uid://bjv8ke3dif1id"]
+[gd_scene load_steps=20 format=3 uid="uid://bjv8ke3dif1id"]
 
 [ext_resource type="Texture2D" uid="uid://bmksfpdtfh4ht" path="res://abilityUnlocks/ability-pickup-64x64.png" id="1_pw2wf"]
 [ext_resource type="Script" path="res://abilityUnlocks/AbilityPickup.gd" id="2_8n0to"]
 [ext_resource type="Texture2D" uid="uid://q58l36wgkloc" path="res://placeholder/art/large-circle.png" id="3_2xvfx"]
+[ext_resource type="Texture2D" uid="uid://d47vvbdw4ij6" path="res://placeholder/art/32x32-cube.png" id="4_er6h0"]
+[ext_resource type="Theme" uid="uid://lmesfrfslv4p" path="res://fonts/rainy-hearts-font-theme.tres" id="5_2hmhx"]
+[ext_resource type="Texture2D" uid="uid://cyyia7eqvg21s" path="res://levelEnd/level-end-box.png" id="5_hxjvu"]
+[ext_resource type="Texture2D" uid="uid://dntqrj1cjg0ol" path="res://genericUi/inputIcons/xbox/XboxSeriesX_RT.png" id="6_83bfl"]
+[ext_resource type="SpriteFrames" uid="uid://7mqeoo5mqlnw" path="res://owl/owl_sprite_frames.tres" id="7_k8b3h"]
+[ext_resource type="SpriteFrames" uid="uid://bghxlls6lq468" path="res://dialog/next-icon-frames.tres" id="9_r4pbn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rrmv8"]
 atlas = ExtResource("1_pw2wf")
@@ -72,6 +78,7 @@ animations = [{
 radius = 23.3452
 
 [node name="AbilityPickup" type="AnimatedSprite2D"]
+process_mode = 3
 sprite_frames = SubResource("SpriteFrames_0pa2x")
 autoplay = "default"
 script = ExtResource("2_8n0to")
@@ -86,4 +93,64 @@ texture = ExtResource("3_2xvfx")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_xtd0e")
 
+[node name="UnlockCanvas" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Backdrop" type="Sprite2D" parent="UnlockCanvas"]
+visible = false
+modulate = Color(0.113725, 0.113725, 0.113725, 0.843137)
+position = Vector2(329, 181)
+scale = Vector2(14.0313, 6.40625)
+texture = ExtResource("4_er6h0")
+
+[node name="AlternateBackdrop" type="Sprite2D" parent="UnlockCanvas"]
+position = Vector2(329, 181)
+scale = Vector2(3.67188, 1.67188)
+texture = ExtResource("5_hxjvu")
+
+[node name="AbilityLabel" type="Label" parent="UnlockCanvas"]
+offset_left = 82.0
+offset_top = 100.0
+offset_right = 578.0
+offset_bottom = 163.0
+theme = ExtResource("5_2hmhx")
+theme_override_font_sizes/font_size = 48
+text = "ABILITY UNLOCKED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AbilityIcon" type="Sprite2D" parent="UnlockCanvas"]
+position = Vector2(326, 221)
+texture = ExtResource("6_83bfl")
+
+[node name="Owl" type="AnimatedSprite2D" parent="UnlockCanvas"]
+position = Vector2(525, 66)
+sprite_frames = ExtResource("7_k8b3h")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="Button" type="Button" parent="UnlockCanvas"]
+clip_children = 1
+offset_left = 437.0
+offset_top = 233.0
+offset_right = 519.0
+offset_bottom = 265.0
+flat = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="UnlockCanvas/Button"]
+position = Vector2(41, 16)
+scale = Vector2(2.5, 2.5)
+sprite_frames = ExtResource("9_r4pbn")
+animation = &"pulsate"
+autoplay = "pulsate"
+
+[node name="Label" type="Label" parent="UnlockCanvas/Button"]
+offset_left = 7.0
+offset_top = 9.0
+offset_right = 90.0
+offset_bottom = 35.0
+theme = ExtResource("5_2hmhx")
+text = "CONTINUE"
+
 [connection signal="body_entered" from="Area2D" to="." method="giveAbility"]
+[connection signal="pressed" from="UnlockCanvas/Button" to="." method="continueGame"]

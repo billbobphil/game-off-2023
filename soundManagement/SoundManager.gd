@@ -25,3 +25,17 @@ func playDeath():
 	if player and not player.playing:
 		player.play();
 
+func playAbilityUnlock():
+	var player = univeralAudioSource.get_node("AbilityUnlock");
+	if player and not player.playing:
+		player.play();
+
+func playInteractSuccessful():
+	var player = univeralAudioSource.get_node("InteractSuccessful");
+	if player and not player.playing:
+		player.play();
+
+func playDash():
+	var player = univeralAudioSource.get_node("DashPlayer");
+	if player and not player.playing:
+		player.play();

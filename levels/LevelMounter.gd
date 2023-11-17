@@ -22,3 +22,10 @@ func loadLevel():
 	var level = levelPaths[currentLevelIndex].instantiate();
 	add_child(level);
 	currentLevel = level;
+	
+	var canvasModulate = currentLevel.get_node("CanvasModulate");
+	if canvasModulate:
+		canvasModulate.visible = false
+		await get_tree().create_timer(.1).timeout;
+		canvasModulate.visible = true
+

@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bhi2mmxdvhynu"]
+[gd_scene load_steps=9 format=3 uid="uid://bhi2mmxdvhynu"]
 
 [ext_resource type="TileSet" uid="uid://d3xq0yrjv43oh" path="res://tilesets/background-tileset.tres" id="1_ae67m"]
 [ext_resource type="TileSet" uid="uid://b6cknjhe8hf2x" path="res://tilesets/grunge-tileset.tres" id="2_p6v1s"]
+[ext_resource type="TileSet" uid="uid://c3asvjr7xn7xw" path="res://tilesets/decorative-tileset.tres" id="2_uliv0"]
 [ext_resource type="PackedScene" uid="uid://72cl4kjth21x" path="res://camera/camera_manager.tscn" id="3_dua1a"]
 [ext_resource type="PackedScene" uid="uid://ch3m86tcv1vai" path="res://spawn/spawn_manager.tscn" id="4_ddnbo"]
 [ext_resource type="PackedScene" uid="uid://cccxqvtr3bkgo" path="res://levelEnd/level_end.tscn" id="5_6rckc"]
@@ -15,7 +16,7 @@ tile_set = ExtResource("1_ae67m")
 format = 2
 
 [node name="DecorativeTilemap" type="TileMap" parent="."]
-tile_set = ExtResource("1_ae67m")
+tile_set = ExtResource("2_uliv0")
 format = 2
 
 [node name="PlayableTilemap" type="TileMap" parent="."]
@@ -30,7 +31,7 @@ format = 2
 
 [node name="DeathPlanes" type="Node2D" parent="."]
 
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
+[node name="CanvasModulate" type="CanvasModulate" parent="." groups=["canvasModulate"]]
 color = Color(0.419608, 0.419608, 0.419608, 1)
 
 [node name="LevelEnd" parent="." instance=ExtResource("5_6rckc")]
@@ -41,5 +42,5 @@ visible = false
 
 [node name="Stats" parent="." instance=ExtResource("6_reyn1")]
 
-[connection signal="level_end" from="LevelEnd" to="Stats" method="onLevelEnd"]
 [connection signal="level_end" from="LevelEnd" to="level_summary_screen" method="_on_level_end"]
+[connection signal="level_end" from="LevelEnd" to="Stats" method="onLevelEnd"]
