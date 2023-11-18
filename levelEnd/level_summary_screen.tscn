@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://dvp8xfxfsgpgw"]
+[gd_scene load_steps=8 format=3 uid="uid://dvp8xfxfsgpgw"]
 
 [ext_resource type="Script" path="res://levelEnd/LevelSummaryScreen.gd" id="1_1sebh"]
 [ext_resource type="Texture2D" uid="uid://cyyia7eqvg21s" path="res://levelEnd/level-end-box.png" id="2_pigqk"]
 [ext_resource type="Theme" uid="uid://lmesfrfslv4p" path="res://fonts/rainy-hearts-font-theme.tres" id="3_t0275"]
 [ext_resource type="Texture2D" uid="uid://hko51bie4a6j" path="res://hud/player-death-icon-32x32.png" id="4_pyd5h"]
 [ext_resource type="Texture2D" uid="uid://x4m51g0cvkb8" path="res://levelEnd/clock-icon-32x32.png" id="5_kmwgc"]
+[ext_resource type="Texture2D" uid="uid://c5jwvuq1k0flk" path="res://collectibles/collecitble-icon.png" id="6_l0rs8"]
 [ext_resource type="StyleBox" uid="uid://d3vmrfplttlmu" path="res://genericUi/button-stylebox-texture.tres" id="6_wbgy0"]
 
 [node name="level_summary_screen" type="CanvasLayer"]
@@ -25,22 +26,6 @@ theme = ExtResource("3_t0275")
 theme_override_colors/font_color = Color(0.949219, 0.75, 0.804688, 1)
 theme_override_font_sizes/font_size = 48
 text = "Stage Complete"
-
-[node name="Deaths" type="Node2D" parent="."]
-position = Vector2(261.688, 180.375)
-
-[node name="Sprite2D" type="Sprite2D" parent="Deaths"]
-position = Vector2(0, -1)
-texture = ExtResource("4_pyd5h")
-
-[node name="Label" type="Label" parent="Deaths"]
-offset_left = 18.0
-offset_top = -16.0
-offset_right = 58.0
-offset_bottom = 17.0
-theme = ExtResource("3_t0275")
-theme_override_font_sizes/font_size = 32
-text = "0"
 
 [node name="Timer" type="Node2D" parent="."]
 position = Vector2(260.688, 129.375)
@@ -97,11 +82,61 @@ theme = ExtResource("3_t0275")
 theme_override_font_sizes/font_size = 32
 text = "000"
 
+[node name="Deaths" type="Node2D" parent="."]
+position = Vector2(261, 176)
+
+[node name="Sprite2D" type="Sprite2D" parent="Deaths"]
+position = Vector2(0, -1)
+texture = ExtResource("4_pyd5h")
+
+[node name="Label" type="Label" parent="Deaths"]
+offset_left = 18.0
+offset_top = -16.0
+offset_right = 58.0
+offset_bottom = 17.0
+theme = ExtResource("3_t0275")
+theme_override_font_sizes/font_size = 32
+text = "0"
+
+[node name="Secrets" type="Node2D" parent="."]
+position = Vector2(264, 220)
+
+[node name="Sprite2D" type="Sprite2D" parent="Secrets"]
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("6_l0rs8")
+
+[node name="CollectedLabel" type="Label" parent="Secrets"]
+offset_left = 15.0
+offset_top = -12.0
+offset_right = 55.0
+offset_bottom = 21.0
+theme = ExtResource("3_t0275")
+theme_override_font_sizes/font_size = 32
+text = "0"
+
+[node name="Slash" type="Label" parent="Secrets"]
+offset_left = 32.0
+offset_top = -12.0
+offset_right = 72.0
+offset_bottom = 21.0
+theme = ExtResource("3_t0275")
+theme_override_font_sizes/font_size = 32
+text = "/"
+
+[node name="TotalLabel" type="Label" parent="Secrets"]
+offset_left = 46.0
+offset_top = -12.0
+offset_right = 86.0
+offset_bottom = 21.0
+theme = ExtResource("3_t0275")
+theme_override_font_sizes/font_size = 32
+text = "0"
+
 [node name="Button" type="Button" parent="."]
-offset_left = 210.688
-offset_top = 221.375
-offset_right = 431.688
-offset_bottom = 293.375
+offset_left = 211.0
+offset_top = 246.0
+offset_right = 432.0
+offset_bottom = 318.0
 theme = ExtResource("3_t0275")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32

@@ -39,3 +39,8 @@ func playDash():
 	var player = univeralAudioSource.get_node("DashPlayer");
 	if player and not player.playing:
 		player.play();
+
+func playCollectiblePickup():
+	var player = univeralAudioSource.get_node("CollectiblePickupPlayer");
+	if player and not player.playing:
+		player.play();

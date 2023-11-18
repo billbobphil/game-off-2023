@@ -4,6 +4,8 @@ extends Node2D
 @export var currentLevelIndex : int = 0;
 var currentLevel : Node2D;
 
+signal new_level_loaded
+
 func _ready():
 	loadLevel();
 
@@ -28,4 +30,11 @@ func loadLevel():
 		canvasModulate.visible = false
 		await get_tree().create_timer(.1).timeout;
 		canvasModulate.visible = true
+
+	new_level_loaded.emit();
+
+	var collectibleCount = currentLevel.get_node("Collectibles").get_child_count();
+	var statTracker = currentLevel.get_node("Stats");
+	print("Collectibles: " + str(collectibleCount));
+	statTracker.setCollectiblesAvailable(collectibleCount);
 

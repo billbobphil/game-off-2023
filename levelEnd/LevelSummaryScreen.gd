@@ -6,6 +6,9 @@ class_name LevelSummaryScreen
 @onready var minutesText : Label = get_node("Timer/Minutes");
 @onready var secondsText : Label = get_node("Timer/Seconds");
 @onready var millisecondsText : Label = get_node("Timer/Milliseconds");
+@onready var collectedLabel : Label = get_node("Secrets/CollectedLabel");
+@onready var totalLabel : Label = get_node("Secrets/TotalLabel");
+
 @export var statsTracker : StatsTracker;
 
 # Called when the node enters the scene tree for the first time.
@@ -22,6 +25,10 @@ func _on_level_end():
 func showLevelEndScreen():
 	self.visible = true;
 	deathText.text = str(statsTracker.deathCounter);
+
+	collectedLabel.text = str(statsTracker.collectiblesFound);
+	totalLabel.text = str(statsTracker.collectiblesAvailable);
+
 	var minutes = int(statsTracker.elapsedTime / 60);
 	var seconds = int(statsTracker.elapsedTime) % 60;
 	var milliseconds = int((statsTracker.elapsedTime - int(statsTracker.elapsedTime)) * 1000);
