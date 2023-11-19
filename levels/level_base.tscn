@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bhi2mmxdvhynu"]
+[gd_scene load_steps=10 format=3 uid="uid://bhi2mmxdvhynu"]
 
 [ext_resource type="TileSet" uid="uid://d3xq0yrjv43oh" path="res://tilesets/background-tileset.tres" id="1_ae67m"]
 [ext_resource type="TileSet" uid="uid://b6cknjhe8hf2x" path="res://tilesets/grunge-tileset.tres" id="2_p6v1s"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cccxqvtr3bkgo" path="res://levelEnd/level_end.tscn" id="5_6rckc"]
 [ext_resource type="PackedScene" uid="uid://dvp8xfxfsgpgw" path="res://levelEnd/level_summary_screen.tscn" id="5_txicx"]
 [ext_resource type="PackedScene" uid="uid://6h7um6j5ifdg" path="res://stats/stats.tscn" id="6_reyn1"]
+[ext_resource type="PackedScene" uid="uid://rgcs6fhblddt" path="res://levelStart/level_start.tscn" id="9_rcpfg"]
 
 [node name="level_base" type="Node2D"]
 
@@ -39,10 +40,13 @@ color = Color(0.419608, 0.419608, 0.419608, 1)
 [node name="LevelEnd" parent="." instance=ExtResource("5_6rckc")]
 position = Vector2(-50, -50)
 
-[node name="level_summary_screen" parent="." instance=ExtResource("5_txicx")]
+[node name="level_summary_screen" parent="." node_paths=PackedStringArray("statsTracker") instance=ExtResource("5_txicx")]
 visible = false
+statsTracker = NodePath("../Stats")
 
 [node name="Stats" parent="." instance=ExtResource("6_reyn1")]
+
+[node name="level_start" parent="." instance=ExtResource("9_rcpfg")]
 
 [connection signal="level_end" from="LevelEnd" to="level_summary_screen" method="_on_level_end"]
 [connection signal="level_end" from="LevelEnd" to="Stats" method="onLevelEnd"]

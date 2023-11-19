@@ -8,16 +8,21 @@ class_name LevelSummaryScreen
 @onready var millisecondsText : Label = get_node("Timer/Milliseconds");
 @onready var collectedLabel : Label = get_node("Secrets/CollectedLabel");
 @onready var totalLabel : Label = get_node("Secrets/TotalLabel");
+@onready var devTimeLabel : Label = get_node("DevTime");
 
 @export var statsTracker : StatsTracker;
+@export var devTime : String = "00:00:000";
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	self.visible = false;
 
 func _process(_delta):
-	if (self.visible && Input.is_action_just_pressed("jump")):
-		on_next_level_button_pressed();
+	if(self.visible):
+		if (Input.is_action_just_pressed("jump") || Input.is_action_just_pressed("acknowledge_dialog")):
+			on_next_level_button_pressed();
+		if(Input.is_action_just_pressed("restart")):
+			on_restart_level_button_pressed();
 
 func _on_level_end():
 	showLevelEndScreen();
@@ -37,7 +42,11 @@ func showLevelEndScreen():
 	secondsText.text = "%02d" % [seconds];
 	millisecondsText.text = "%03d" % [milliseconds];
 
+	devTimeLabel.text = devTime;
+
 func on_next_level_button_pressed():
 	get_tree().call_group("LevelMounter", "nextLevel");
 
+func on_restart_level_button_pressed():
+	get_tree().call_group("LevelMounter", "restartLevel");
 

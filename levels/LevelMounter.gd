@@ -9,6 +9,10 @@ signal new_level_loaded
 func _ready():
 	loadLevel();
 
+func _process(_delta):
+	if(Input.is_action_just_pressed("restart")):
+		restartLevel();
+
 func nextLevel():
 	currentLevel.queue_free();
 	currentLevelIndex += 1;
@@ -37,4 +41,8 @@ func loadLevel():
 	var statTracker = currentLevel.get_node("Stats");
 	print("Collectibles: " + str(collectibleCount));
 	statTracker.setCollectiblesAvailable(collectibleCount);
+
+func restartLevel():
+	currentLevel.queue_free();
+	loadLevel();
 

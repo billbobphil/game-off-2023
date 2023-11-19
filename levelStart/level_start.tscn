@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://rgcs6fhblddt"]
+
+[ext_resource type="Texture2D" uid="uid://cyyia7eqvg21s" path="res://levelEnd/level-end-box.png" id="1_4jgut"]
+[ext_resource type="Script" path="res://levelStart/LevelStart.gd" id="1_e7du6"]
+[ext_resource type="Theme" uid="uid://lmesfrfslv4p" path="res://fonts/rainy-hearts-font-theme.tres" id="2_ld5a5"]
+[ext_resource type="SpriteFrames" uid="uid://bghxlls6lq468" path="res://dialog/next-icon-frames.tres" id="3_e6x1g"]
+
+[node name="level_start" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_e7du6")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(325, 169)
+scale = Vector2(3.60938, 2.00781)
+texture = ExtResource("1_4jgut")
+
+[node name="LevelName" type="Label" parent="CanvasLayer"]
+offset_left = 164.0
+offset_top = 97.0
+offset_right = 480.0
+offset_bottom = 160.0
+theme = ExtResource("2_ld5a5")
+theme_override_font_sizes/font_size = 64
+text = "LEVEL NAME"
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+clip_children = 1
+offset_left = 285.0
+offset_top = 190.0
+offset_right = 367.0
+offset_bottom = 222.0
+flat = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/Button"]
+position = Vector2(41, 16)
+scale = Vector2(4, 4)
+sprite_frames = ExtResource("3_e6x1g")
+animation = &"pulsate"
+autoplay = "pulsate"
+
+[node name="Label" type="Label" parent="CanvasLayer/Button"]
+layout_mode = 0
+offset_left = -23.0
+offset_right = 111.0
+offset_bottom = 33.0
+theme = ExtResource("2_ld5a5")
+theme_override_font_sizes/font_size = 32
+text = "START"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="beginLevel"]

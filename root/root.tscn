@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://djd4loyuphb7b"]
+[gd_scene load_steps=15 format=3 uid="uid://djd4loyuphb7b"]
 
 [ext_resource type="PackedScene" uid="uid://dsjn2k6b48pjo" path="res://levels/level_one/level_one.tscn" id="2_rl4h1"]
 [ext_resource type="PackedScene" uid="uid://dxfmrc6ytevvf" path="res://levels/level_two/level_two.tscn" id="3_2nj7d"]
 [ext_resource type="Theme" uid="uid://lmesfrfslv4p" path="res://fonts/rainy-hearts-font-theme.tres" id="4_2temy"]
 [ext_resource type="Script" path="res://hud/HUD.gd" id="4_rshjh"]
+[ext_resource type="PackedScene" uid="uid://dn52cmgg452gm" path="res://levels/level_three/level_three.tscn" id="4_yfh48"]
 [ext_resource type="Texture2D" uid="uid://hko51bie4a6j" path="res://hud/player-death-icon-32x32.png" id="5_mlvek"]
 [ext_resource type="Script" path="res://levels/LevelMounter.gd" id="6_ovqv7"]
 [ext_resource type="AudioStream" uid="uid://px8mfp022k0g" path="res://player/sound/death.wav" id="7_0poe8"]
@@ -19,8 +20,7 @@
 [node name="LevelMounter" type="Node2D" parent="." groups=["LevelMounter"]]
 position = Vector2(-1, 0)
 script = ExtResource("6_ovqv7")
-levelPaths = Array[PackedScene]([ExtResource("2_rl4h1"), ExtResource("3_2nj7d")])
-currentLevelIndex = 1
+levelPaths = Array[PackedScene]([ExtResource("2_rl4h1"), ExtResource("3_2nj7d"), ExtResource("4_yfh48")])
 
 [node name="HUD" type="CanvasLayer" parent="."]
 script = ExtResource("4_rshjh")
@@ -99,5 +99,6 @@ process_mode = 3
 [node name="Track_One" type="AudioStreamPlayer" parent="MusicPlayer"]
 stream = ExtResource("13_ebshx")
 volume_db = -20.0
+autoplay = true
 
 [connection signal="new_level_loaded" from="LevelMounter" to="HUD" method="on_new_level_loaded"]
