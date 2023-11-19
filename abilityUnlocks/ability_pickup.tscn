@@ -145,6 +145,7 @@ animation = &"pulsate"
 autoplay = "pulsate"
 
 [node name="Label" type="Label" parent="UnlockCanvas/Button"]
+layout_mode = 0
 offset_left = 7.0
 offset_top = 9.0
 offset_right = 90.0
