@@ -6,7 +6,7 @@
 [ext_resource type="SpriteFrames" uid="uid://dfq6e7t54sn4r" path="res://player/art/large-scale-sprite-frames.tres" id="4_rxv4b"]
 [ext_resource type="Texture2D" uid="uid://q58l36wgkloc" path="res://placeholder/art/large-circle.png" id="5_qk6tp"]
 [ext_resource type="AudioStream" uid="uid://c1fwqlol2o1u2" path="res://player/sound/footsteps-3.wav" id="6_605yo"]
-[ext_resource type="AudioStream" uid="uid://d32sb2j34kdls" path="res://player/sound/jump.wav" id="7_iwfde"]
+[ext_resource type="AudioStream" uid="uid://bms5icf2c8qra" path="res://player/sound/better-jump-alt.wav" id="7_xwnx2"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_okpn0"]
 height = 26.0
@@ -45,5 +45,4 @@ stream = ExtResource("6_605yo")
 volume_db = -5.0
 
 [node name="JumpPlayer" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("7_iwfde")
-volume_db = -5.0
+stream = ExtResource("7_xwnx2")
