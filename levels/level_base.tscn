@@ -34,6 +34,10 @@ format = 2
 
 [node name="Collectibles" type="Node2D" parent="."]
 
+[node name="Platforms" type="Node2D" parent="."]
+
+[node name="BreakablePlatforms" type="Node2D" parent="Platforms"]
+
 [node name="CanvasModulate" type="CanvasModulate" parent="." groups=["canvasModulate"]]
 color = Color(0.419608, 0.419608, 0.419608, 1)
 

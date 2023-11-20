@@ -40,9 +40,9 @@ position = Vector2(20, 19)
 texture = ExtResource("5_mlvek")
 
 [node name="CollectibleCounterLabel" type="Label" parent="HUD"]
-offset_left = 99.0
+offset_left = 103.0
 offset_top = 5.0
-offset_right = 113.0
+offset_right = 117.0
 offset_bottom = 38.0
 theme = ExtResource("4_2temy")
 theme_override_font_sizes/font_size = 32
@@ -51,18 +51,18 @@ text = "0
 horizontal_alignment = 2
 
 [node name="Slash" type="Label" parent="HUD"]
-offset_left = 116.0
+offset_left = 120.0
 offset_top = 5.0
-offset_right = 128.0
+offset_right = 132.0
 offset_bottom = 38.0
 theme = ExtResource("4_2temy")
 theme_override_font_sizes/font_size = 32
 text = "/"
 
 [node name="TotalCollectibleCounterLabel" type="Label" parent="HUD"]
-offset_left = 129.0
+offset_left = 133.0
 offset_top = 5.0
-offset_right = 143.0
+offset_right = 147.0
 offset_bottom = 38.0
 theme = ExtResource("4_2temy")
 theme_override_font_sizes/font_size = 32
@@ -70,7 +70,7 @@ text = "0
 "
 
 [node name="CollectibleIcon" type="Sprite2D" parent="HUD"]
-position = Vector2(86, 22)
+position = Vector2(89, 22)
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("7_gpfsh")
 
@@ -78,10 +78,11 @@ texture = ExtResource("7_gpfsh")
 
 [node name="PlayerDeathPlayer" type="AudioStreamPlayer" parent="UniversalAvailableAudio"]
 stream = ExtResource("7_0poe8")
-volume_db = -3.0
+volume_db = -5.0
 
 [node name="AbilityUnlock" type="AudioStreamPlayer" parent="UniversalAvailableAudio"]
 stream = ExtResource("8_5xvi2")
+volume_db = -7.0
 
 [node name="InteractSuccessful" type="AudioStreamPlayer" parent="UniversalAvailableAudio"]
 stream = ExtResource("9_v3ha5")
@@ -93,13 +94,14 @@ volume_db = -5.0
 
 [node name="CollectiblePickupPlayer" type="AudioStreamPlayer" parent="UniversalAvailableAudio"]
 stream = ExtResource("12_6hh8i")
-volume_db = -10.0
+volume_db = -12.0
 
 [node name="MusicPlayer" type="Node2D" parent="."]
 process_mode = 3
 
 [node name="Track_One" type="AudioStreamPlayer" parent="MusicPlayer"]
 stream = ExtResource("13_ebshx")
-volume_db = -20.0
+volume_db = -25.0
+autoplay = true
 
 [connection signal="new_level_loaded" from="LevelMounter" to="HUD" method="on_new_level_loaded"]

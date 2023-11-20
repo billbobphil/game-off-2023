@@ -582,16 +582,16 @@ position = Vector2(692, -160)
 [node name="collectible2" parent="Collectibles" index="1" instance=ExtResource("7_yo5xu")]
 position = Vector2(772, -736)
 
-[node name="LevelEnd" parent="." index="9"]
+[node name="LevelEnd" parent="." index="10"]
 position = Vector2(2141, -742)
 
 [node name="AbilityPickup" parent="." index="11" instance=ExtResource("3_pg34q")]
 position = Vector2(464, 286)
 
-[node name="TestCamera" type="Camera2D" parent="." index="12"]
-offset = Vector2(1850, -600)
+[node name="level_summary_screen" parent="." index="12"]
+devTime = "00:45:500"
 
-[node name="SecretOwlFriend" parent="." index="14" instance=ExtResource("11_fuwpe")]
+[node name="SecretOwlFriend" parent="." index="13" instance=ExtResource("11_fuwpe")]
 position = Vector2(732, -556)
 
 [node name="Sprite2D" parent="SecretOwlFriend" index="0"]
