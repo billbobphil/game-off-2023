@@ -54,3 +54,13 @@ func playShrink():
 	var player = univeralAudioSource.get_node("ShrinkPlayer");
 	if player and not player.playing:
 		player.play();
+
+func playPlatformBreak():
+	var player = univeralAudioSource.get_node("PlatformBreakPlayer");
+	if player and not player.playing:
+		player.play();
+
+func playLanding():
+	var player = univeralAudioSource.get_node("PlayerLandingPlayer");
+	if player:
+		player.play();

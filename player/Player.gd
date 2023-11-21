@@ -68,10 +68,6 @@ var scaleDictionary : Dictionary = {};
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-#TODO: double-jump?
-#TODO: wall-jump?
-#TODO: scale-effects
-
 func _ready():
 	initializeScaleDictionary();
 	sprite.animation = "idle";
@@ -214,6 +210,8 @@ func handleDashTimer(delta):
 	dashCooldownTimer += delta
 
 func onContactWithFloorHandler():
+	if(shouldFall):
+		SoundManager.playLanding();
 	coyoteTimer = 0;
 	shouldFall = false;
 	isJumping = false;

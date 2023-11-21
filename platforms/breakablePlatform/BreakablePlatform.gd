@@ -5,6 +5,7 @@ extends Node2D
 var shouldCheckForPlayerSize = false;
 var playerInContact = false;
 var playerReference = null;
+var isPlatformDestroyed = false;
 
 func _ready():
 	for deathPlane in get_tree().get_nodes_in_group("deathPlanes"):
@@ -22,7 +23,7 @@ func on_body_exited(body):
 		shouldCheckForPlayerSize = false;
 
 func _process(_delta):
-	if(shouldCheckForPlayerSize && playerInContact):
+	if(shouldCheckForPlayerSize && playerInContact && !isPlatformDestroyed):
 		if(playerReference.currentScale == Player.Scales.LARGE):
 			destroyPlatform()
 			shouldCheckForPlayerSize = false;
@@ -38,8 +39,11 @@ func destroyPlatform():
 	staticLayer.collision_layer = 0;
 	staticLayer.collision_mask = 0;
 	sprites.visible = false;
+	isPlatformDestroyed = true;
+	SoundManager.playPlatformBreak();
 
 func restorePlatform():
 	staticLayer.collision_layer = 1;
 	staticLayer.collision_mask = 1;
 	sprites.visible = true;
+	isPlatformDestroyed = false;
