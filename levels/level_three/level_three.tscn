@@ -669,6 +669,9 @@ position = Vector2(904, 1032)
 [node name="LevelEnd" parent="." index="10"]
 position = Vector2(1865, 1138)
 
+[node name="level_summary_screen" parent="." index="11"]
+devTime = "00:50:500"
+
 [node name="TestCamera" type="Camera2D" parent="." index="13"]
 offset = Vector2(1600, 1000)
 script = ExtResource("6_eccqm")
