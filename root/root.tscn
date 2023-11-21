@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://djd4loyuphb7b"]
+[gd_scene load_steps=17 format=3 uid="uid://djd4loyuphb7b"]
 
 [ext_resource type="PackedScene" uid="uid://dsjn2k6b48pjo" path="res://levels/level_one/level_one.tscn" id="2_rl4h1"]
 [ext_resource type="PackedScene" uid="uid://dxfmrc6ytevvf" path="res://levels/level_two/level_two.tscn" id="3_2nj7d"]
@@ -14,6 +14,8 @@
 [ext_resource type="AudioStream" uid="uid://c6hqtbin1q7bv" path="res://player/sound/dash.wav" id="10_g6ral"]
 [ext_resource type="AudioStream" uid="uid://jcmeij684g88" path="res://collectibles/collectible-pickup.wav" id="12_6hh8i"]
 [ext_resource type="AudioStream" uid="uid://td3a3g8wp78t" path="res://music/cave explorer.wav" id="13_ebshx"]
+[ext_resource type="AudioStream" uid="uid://cmmjaqe762uvv" path="res://player/sound/grow.wav" id="14_n0lvv"]
+[ext_resource type="AudioStream" uid="uid://vltw0eyh7ie" path="res://player/sound/shrink.wav" id="15_joaio"]
 
 [node name="Root" type="Node2D"]
 
@@ -78,7 +80,7 @@ texture = ExtResource("7_gpfsh")
 
 [node name="PlayerDeathPlayer" type="AudioStreamPlayer" parent="UniversalAvailableAudio"]
 stream = ExtResource("7_0poe8")
-volume_db = -5.0
+volume_db = -15.0
 
 [node name="AbilityUnlock" type="AudioStreamPlayer" parent="UniversalAvailableAudio"]
 stream = ExtResource("8_5xvi2")
@@ -95,6 +97,13 @@ volume_db = -5.0
 [node name="CollectiblePickupPlayer" type="AudioStreamPlayer" parent="UniversalAvailableAudio"]
 stream = ExtResource("12_6hh8i")
 volume_db = -12.0
+
+[node name="GrowPlayer" type="AudioStreamPlayer" parent="UniversalAvailableAudio"]
+stream = ExtResource("14_n0lvv")
+volume_db = -3.0
+
+[node name="ShrinkPlayer" type="AudioStreamPlayer" parent="UniversalAvailableAudio"]
+stream = ExtResource("15_joaio")
 
 [node name="MusicPlayer" type="Node2D" parent="."]
 process_mode = 3

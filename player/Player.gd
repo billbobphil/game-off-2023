@@ -114,8 +114,10 @@ func scaleUp():
 		return;
 	elif(currentScale == Scales.SMALL):
 		currentScale = Scales.NORMAL;
+		SoundManager.playGrow();
 	else:
 		currentScale = Scales.LARGE;
+		SoundManager.playGrow();
 	applyScaleTransformations();
 
 func scaleDown():
@@ -123,8 +125,10 @@ func scaleDown():
 		return;
 	elif(currentScale == Scales.LARGE):
 		currentScale = Scales.NORMAL;
+		SoundManager.playShrink();
 	else:
 		currentScale = Scales.SMALL;
+		SoundManager.playShrink();
 	applyScaleTransformations();
 	
 func applyScaleTransformations():

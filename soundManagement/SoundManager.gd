@@ -44,3 +44,13 @@ func playCollectiblePickup():
 	var player = univeralAudioSource.get_node("CollectiblePickupPlayer");
 	if player and not player.playing:
 		player.play();
+
+func playGrow():
+	var player = univeralAudioSource.get_node("GrowPlayer");
+	if player and not player.playing:
+		player.play();
+
+func playShrink():
+	var player = univeralAudioSource.get_node("ShrinkPlayer");
+	if player and not player.playing:
+		player.play();
