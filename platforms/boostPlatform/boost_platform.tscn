@@ -1,0 +1,139 @@
+[gd_scene load_steps=15 format=3 uid="uid://cs6fu8e7vnh66"]
+
+[ext_resource type="Script" path="res://platforms/boostPlatform/BoostPlatform.gd" id="1_2b5to"]
+[ext_resource type="Texture2D" uid="uid://c254sjtb5c5t3" path="res://platforms/boostPlatform/boost-platform-tile-16x16.png" id="2_7ouyw"]
+[ext_resource type="Texture2D" uid="uid://vdxs5ahuhuk8" path="res://platforms/boostPlatform/blowing-sprite-animated-16x64.png" id="3_q5la2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ogs6k"]
+size = Vector2(46, 284.5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bk1lm"]
+atlas = ExtResource("3_q5la2")
+region = Rect2(0, 0, 16, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sneo3"]
+atlas = ExtResource("3_q5la2")
+region = Rect2(16, 0, 16, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dfmap"]
+atlas = ExtResource("3_q5la2")
+region = Rect2(32, 0, 16, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o5ss7"]
+atlas = ExtResource("3_q5la2")
+region = Rect2(48, 0, 16, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4c7s2"]
+atlas = ExtResource("3_q5la2")
+region = Rect2(64, 0, 16, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mw15s"]
+atlas = ExtResource("3_q5la2")
+region = Rect2(80, 0, 16, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bi0yn"]
+atlas = ExtResource("3_q5la2")
+region = Rect2(96, 0, 16, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jmqoa"]
+atlas = ExtResource("3_q5la2")
+region = Rect2(112, 0, 16, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uvf00"]
+atlas = ExtResource("3_q5la2")
+region = Rect2(128, 0, 16, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l55mt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bk1lm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sneo3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dfmap")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o5ss7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4c7s2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mw15s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bi0yn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jmqoa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uvf00")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="boost_platform" type="Node2D"]
+script = ExtResource("1_2b5to")
+forceToApply = -2300.0
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(16, -150.75)
+shape = SubResource("RectangleShape2D_ogs6k")
+debug_color = Color(0.631373, 0.52549, 0.176471, 0.419608)
+
+[node name="Sprites" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprites"]
+texture = ExtResource("2_7ouyw")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Sprites"]
+position = Vector2(16, 0)
+texture = ExtResource("2_7ouyw")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Sprites"]
+position = Vector2(32, 0)
+texture = ExtResource("2_7ouyw")
+
+[node name="Effects" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Effects"]
+position = Vector2(8, -40)
+sprite_frames = SubResource("SpriteFrames_l55mt")
+autoplay = "default"
+frame = 3
+frame_progress = 0.332553
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Effects"]
+position = Vector2(24, -56)
+sprite_frames = SubResource("SpriteFrames_l55mt")
+autoplay = "default"
+frame = 6
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="Effects"]
+position = Vector2(16, -127)
+sprite_frames = SubResource("SpriteFrames_l55mt")
+autoplay = "default"
+frame = 4
+
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="Effects"]
+position = Vector2(8, -210)
+sprite_frames = SubResource("SpriteFrames_l55mt")
+autoplay = "default"
+frame = 2
+
+[node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="Effects"]
+position = Vector2(24, -260)
+sprite_frames = SubResource("SpriteFrames_l55mt")
+autoplay = "default"
+frame = 5
+
+[connection signal="body_entered" from="Area2D" to="." method="on_body_enter"]
+[connection signal="body_exited" from="Area2D" to="." method="on_body_exit"]

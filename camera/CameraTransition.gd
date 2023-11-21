@@ -6,6 +6,7 @@ class_name CameraTransition
 @export var newYPosition : float;
 
 signal move_camera(newXPosition, newYPosition)
+signal camera_start_following_player
 
 func _on_body_entered(body):
 	if(body.name == "Player"):
