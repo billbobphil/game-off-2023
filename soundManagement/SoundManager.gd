@@ -47,12 +47,12 @@ func playCollectiblePickup():
 
 func playGrow():
 	var player = univeralAudioSource.get_node("GrowPlayer");
-	if player and not player.playing:
+	if player:
 		player.play();
 
 func playShrink():
 	var player = univeralAudioSource.get_node("ShrinkPlayer");
-	if player and not player.playing:
+	if player:
 		player.play();
 
 func playPlatformBreak():
