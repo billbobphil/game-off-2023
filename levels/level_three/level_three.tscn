@@ -709,7 +709,7 @@ horizontal_alignment = 0
 position = Vector2(224, 47)
 
 [node name="InputIcon" parent="ScreenOne_Owl/DialogSystem/CanvasLayer" index="2"]
-position = Vector2(276, 26)
+position = Vector2(276, -44)
 
 [node name="Area2D" type="Area2D" parent="ScreenOne_Owl" index="2"]
 position = Vector2(26, 44)

@@ -4,6 +4,12 @@ extends CanvasLayer
 @onready var collectibleCounterLabel = $CollectibleCounterLabel;
 @onready var totalCollectibleCounterLabel = $TotalCollectibleCounterLabel;
 
+func enableHUD():
+	pass;
+
+func disableHUD():
+	visible = false;
+	pass;
 
 func incrementDeathCounter(newCount):
 	deathCounterLabel.text = str(newCount);

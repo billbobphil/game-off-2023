@@ -1,0 +1,10 @@
+[gd_resource type="StyleBoxTexture" load_steps=3 format=3 uid="uid://dc84olfnlb6ny"]
+
+[ext_resource type="Texture2D" uid="uid://dgg6j4immxo4m" path="res://dialog/dialog-next-cue.png" id="1_c4o6v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vysss"]
+atlas = ExtResource("1_c4o6v")
+region = Rect2(64, 0, 32, 16)
+
+[resource]
+texture = SubResource("AtlasTexture_vysss")

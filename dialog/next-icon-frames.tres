@@ -1,6 +1,10 @@
-[gd_resource type="SpriteFrames" load_steps=7 format=3 uid="uid://bghxlls6lq468"]
+[gd_resource type="SpriteFrames" load_steps=8 format=3 uid="uid://bghxlls6lq468"]
 
 [ext_resource type="Texture2D" uid="uid://dgg6j4immxo4m" path="res://dialog/dialog-next-cue.png" id="1_76cf6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vuwbf"]
+atlas = ExtResource("1_76cf6")
+region = Rect2(32, 0, 32, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7dfht"]
 atlas = ExtResource("1_76cf6")
@@ -24,6 +28,14 @@ region = Rect2(224, 0, 32, 16)
 
 [resource]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vuwbf")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_7dfht")
