@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://djd4loyuphb7b"]
+[gd_scene load_steps=21 format=3 uid="uid://djd4loyuphb7b"]
 
 [ext_resource type="PackedScene" uid="uid://dl4gfy03v2u11" path="res://menu/main_menu.tscn" id="2_hos4s"]
 [ext_resource type="PackedScene" uid="uid://dsjn2k6b48pjo" path="res://levels/level_one/level_one.tscn" id="2_rl4h1"]
@@ -19,6 +19,7 @@
 [ext_resource type="AudioStream" uid="uid://vltw0eyh7ie" path="res://player/sound/shrink.wav" id="15_joaio"]
 [ext_resource type="AudioStream" uid="uid://bjoyml8pt8y7q" path="res://platforms/breakablePlatform/platform-destroy.wav" id="16_ss6dj"]
 [ext_resource type="AudioStream" uid="uid://deyx2fsvd1f1c" path="res://player/sound/landing.wav" id="17_l46ra"]
+[ext_resource type="AudioStream" uid="uid://7v76v2ljyoum" path="res://genericSound/button-click-sound.mp3" id="19_lwn5x"]
 
 [node name="Root" type="Node2D"]
 
@@ -115,6 +116,10 @@ volume_db = -4.0
 [node name="PlayerLandingPlayer" type="AudioStreamPlayer" parent="UniversalAvailableAudio"]
 stream = ExtResource("17_l46ra")
 volume_db = -5.0
+
+[node name="ButtonFocusPlayer" type="AudioStreamPlayer" parent="UniversalAvailableAudio"]
+stream = ExtResource("19_lwn5x")
+volume_db = -12.0
 
 [node name="MusicPlayer" type="Node2D" parent="."]
 process_mode = 3

@@ -64,3 +64,8 @@ func playLanding():
 	var player = univeralAudioSource.get_node("PlayerLandingPlayer");
 	if player:
 		player.play();
+
+func playButtonFocus():
+	var player = univeralAudioSource.get_node("ButtonFocusPlayer");
+	if player:
+		player.play();
