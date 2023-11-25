@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6hahw06rx4ll"]
+
+[ext_resource type="Theme" uid="uid://lmesfrfslv4p" path="res://fonts/rainy-hearts-font-theme.tres" id="1_a5nna"]
+
+[node name="game_end" type="Node2D"]
+
+[node name="Collectibles" type="Node2D" parent="."]
+
+[node name="Stats" type="Node2D" parent="."]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." groups=["canvasModulate"]]
+color = Color(0.380392, 0.380392, 0.380392, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 205.0
+offset_top = 157.0
+offset_right = 453.0
+offset_bottom = 190.0
+theme = ExtResource("1_a5nna")
+theme_override_font_sizes/font_size = 32
+text = "Thanks for playing!"

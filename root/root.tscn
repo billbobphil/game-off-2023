@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://djd4loyuphb7b"]
+[gd_scene load_steps=23 format=3 uid="uid://djd4loyuphb7b"]
 
 [ext_resource type="PackedScene" uid="uid://dl4gfy03v2u11" path="res://menu/main_menu.tscn" id="2_hos4s"]
 [ext_resource type="PackedScene" uid="uid://dsjn2k6b48pjo" path="res://levels/level_one/level_one.tscn" id="2_rl4h1"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://hko51bie4a6j" path="res://hud/player-death-icon-32x32.png" id="5_mlvek"]
 [ext_resource type="Script" path="res://levels/LevelMounter.gd" id="6_ovqv7"]
 [ext_resource type="AudioStream" uid="uid://px8mfp022k0g" path="res://player/sound/death.wav" id="7_0poe8"]
+[ext_resource type="PackedScene" uid="uid://b6hahw06rx4ll" path="res://gameEnd/game_end.tscn" id="7_eb1s0"]
 [ext_resource type="Texture2D" uid="uid://c5jwvuq1k0flk" path="res://collectibles/collecitble-icon.png" id="7_gpfsh"]
 [ext_resource type="AudioStream" uid="uid://cagnuh0m17fkc" path="res://abilityUnlocks/dramatic-zoom.mp3" id="8_5xvi2"]
 [ext_resource type="AudioStream" uid="uid://5m7ak0bsmlma" path="res://genericSound/button-click.wav" id="9_v3ha5"]
@@ -27,8 +28,8 @@
 [node name="LevelMounter" type="Node2D" parent="." groups=["LevelMounter"]]
 position = Vector2(-1, 0)
 script = ExtResource("6_ovqv7")
-levelPaths = Array[PackedScene]([ExtResource("2_hos4s"), ExtResource("3_ob0di"), ExtResource("2_rl4h1"), ExtResource("3_2nj7d"), ExtResource("4_yfh48")])
-specialLevelIndexes = Array[int]([0])
+levelPaths = Array[PackedScene]([ExtResource("2_hos4s"), ExtResource("3_ob0di"), ExtResource("2_rl4h1"), ExtResource("3_2nj7d"), ExtResource("4_yfh48"), ExtResource("7_eb1s0")])
+specialLevelIndexes = Array[int]([0, 1, 5])
 
 [node name="HUD" type="CanvasLayer" parent="." groups=["HUD"]]
 script = ExtResource("4_rshjh")
