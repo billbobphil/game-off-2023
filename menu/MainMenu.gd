@@ -1,7 +1,5 @@
 extends Node2D
 	
-#TODO: let controller interact with the buttons!
-#TODO: maybe button hover effects
 #TODO: [STRETCH] buttons for level select -> REMEMBER TO PUT A SCRIPT INTO EACH LEVEL TO ENSURE THE CORRECT ABILITIES HAVE BEEN TURNED ON
 
 @onready var playButton : Button = get_node("CanvasLayer/PlayButton");

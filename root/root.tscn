@@ -1,8 +1,9 @@
-[gd_scene load_steps=21 format=3 uid="uid://djd4loyuphb7b"]
+[gd_scene load_steps=22 format=3 uid="uid://djd4loyuphb7b"]
 
 [ext_resource type="PackedScene" uid="uid://dl4gfy03v2u11" path="res://menu/main_menu.tscn" id="2_hos4s"]
 [ext_resource type="PackedScene" uid="uid://dsjn2k6b48pjo" path="res://levels/level_one/level_one.tscn" id="2_rl4h1"]
 [ext_resource type="PackedScene" uid="uid://dxfmrc6ytevvf" path="res://levels/level_two/level_two.tscn" id="3_2nj7d"]
+[ext_resource type="PackedScene" uid="uid://bj05e5vky4x8l" path="res://credits/credits.tscn" id="3_ob0di"]
 [ext_resource type="Theme" uid="uid://lmesfrfslv4p" path="res://fonts/rainy-hearts-font-theme.tres" id="4_2temy"]
 [ext_resource type="Script" path="res://hud/HUD.gd" id="4_rshjh"]
 [ext_resource type="PackedScene" uid="uid://dn52cmgg452gm" path="res://levels/level_three/level_three.tscn" id="4_yfh48"]
@@ -26,7 +27,7 @@
 [node name="LevelMounter" type="Node2D" parent="." groups=["LevelMounter"]]
 position = Vector2(-1, 0)
 script = ExtResource("6_ovqv7")
-levelPaths = Array[PackedScene]([ExtResource("2_hos4s"), ExtResource("2_rl4h1"), ExtResource("3_2nj7d"), ExtResource("4_yfh48")])
+levelPaths = Array[PackedScene]([ExtResource("2_hos4s"), ExtResource("3_ob0di"), ExtResource("2_rl4h1"), ExtResource("3_2nj7d"), ExtResource("4_yfh48")])
 specialLevelIndexes = Array[int]([0])
 
 [node name="HUD" type="CanvasLayer" parent="." groups=["HUD"]]
