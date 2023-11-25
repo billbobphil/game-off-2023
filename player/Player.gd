@@ -8,11 +8,6 @@ class_name Player
 @export_group("")
 var mass : float = 1.0;
 
-# @export_group("Ability Flags")
-# @export var isDashEnabled : bool = false;
-# @export var isScaleUpEnabled : bool = false;
-# @export var isScaleDownEnabled : bool = false;
-
 @export_group("Scale Properties")
 @export_subgroup("Normal Scale")
 @export var normalSpriteScale : float = 1.0
