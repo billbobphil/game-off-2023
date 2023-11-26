@@ -23,6 +23,7 @@ jumpVelocity = -500.0
 jumpCutoffSpeed = -100.0
 coyoteTimeWindow = 0.08
 dashSpeed = 500.0
+dashDuration = 0.1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 1
