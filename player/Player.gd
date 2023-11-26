@@ -162,7 +162,10 @@ func _physics_process(delta):
 	coyoteTimeHandler(delta);
 
 	if shouldFall:
-		velocity.y += gravity * delta * (fallMultiplier - 1) * mass
+		if(isDashing):
+			velocity.y += (gravity *.25) * delta * (fallMultiplier - 1) * mass
+		else:
+			velocity.y += gravity * delta * (fallMultiplier - 1) * mass
 
 	jumpInputHandler();
 	horizontalMovement();
@@ -246,6 +249,7 @@ func beginDash():
 	isDashing = true;
 	canDash = false;
 	var dashDirection = getDashDirection();
+	velocity = Vector2.ZERO;
 	velocity = dashDirection * dashSpeed; #requires you to be already moving a direction
 	dashTimer = 0.0;
 	dashCooldownTimer = 0.0;
