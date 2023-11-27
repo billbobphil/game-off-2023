@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 SoundManager="*res://soundManagement/SoundManager.gd"
 GamepadDetection="*res://genericUi/GamepadDetection.gd"
 AbilityFlags="*res://abilityUnlocks/AbilityFlags.gd"
+StatsTotals="*res://stats/StatsTotals.gd"
 
 [display]
 

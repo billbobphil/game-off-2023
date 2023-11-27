@@ -1,8 +1,25 @@
-[gd_scene load_steps=2 format=3 uid="uid://b6hahw06rx4ll"]
+[gd_scene load_steps=13 format=3 uid="uid://b6hahw06rx4ll"]
 
+[ext_resource type="Script" path="res://gameEnd/GameEnd.gd" id="1_88ycx"]
 [ext_resource type="Theme" uid="uid://lmesfrfslv4p" path="res://fonts/rainy-hearts-font-theme.tres" id="1_a5nna"]
+[ext_resource type="Texture2D" uid="uid://x4m51g0cvkb8" path="res://levelEnd/clock-icon-32x32.png" id="2_8ofiw"]
+[ext_resource type="Texture2D" uid="uid://hko51bie4a6j" path="res://hud/player-death-icon-32x32.png" id="3_0mhpy"]
+[ext_resource type="Texture2D" uid="uid://c5jwvuq1k0flk" path="res://collectibles/collecitble-icon.png" id="4_mny0l"]
+[ext_resource type="StyleBox" uid="uid://bgxp5mgg8aux6" path="res://menu/button-texture-default.tres" id="5_t8sh5"]
+[ext_resource type="StyleBox" uid="uid://dc84olfnlb6ny" path="res://menu/button-texture-hovered.tres" id="6_623hw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5m00v"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yw2an"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4qt16"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lgnvp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oy51k"]
 
 [node name="game_end" type="Node2D"]
+script = ExtResource("1_88ycx")
 
 [node name="Collectibles" type="Node2D" parent="."]
 
@@ -15,9 +32,176 @@ color = Color(0.380392, 0.380392, 0.380392, 1)
 
 [node name="Label" type="Label" parent="CanvasLayer"]
 offset_left = 205.0
-offset_top = 157.0
+offset_top = 43.0
 offset_right = 453.0
-offset_bottom = 190.0
+offset_bottom = 76.0
 theme = ExtResource("1_a5nna")
 theme_override_font_sizes/font_size = 32
 text = "Thanks for playing!"
+
+[node name="Timer" type="Node2D" parent="CanvasLayer"]
+position = Vector2(260.688, 129.375)
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Timer"]
+texture = ExtResource("2_8ofiw")
+
+[node name="Hours" type="Label" parent="CanvasLayer/Timer"]
+offset_left = 18.312
+offset_top = -14.375
+offset_right = 58.312
+offset_bottom = 18.625
+theme = ExtResource("1_a5nna")
+theme_override_font_sizes/font_size = 32
+text = "00
+"
+
+[node name="Hours-Minuts-Colon" type="Label" parent="CanvasLayer/Timer"]
+offset_left = 47.312
+offset_top = -16.375
+offset_right = 87.312
+offset_bottom = 16.625
+theme = ExtResource("1_a5nna")
+theme_override_font_sizes/font_size = 32
+text = ":
+"
+
+[node name="Minutes" type="Label" parent="CanvasLayer/Timer"]
+offset_left = 51.0
+offset_top = -14.0
+offset_right = 91.0
+offset_bottom = 19.0
+theme = ExtResource("1_a5nna")
+theme_override_font_sizes/font_size = 32
+text = "00
+"
+
+[node name="Minutes-Seconds-Colon" type="Label" parent="CanvasLayer/Timer"]
+offset_left = 81.0
+offset_top = -16.0
+offset_right = 121.0
+offset_bottom = 17.0
+theme = ExtResource("1_a5nna")
+theme_override_font_sizes/font_size = 32
+text = ":
+"
+
+[node name="Seconds" type="Label" parent="CanvasLayer/Timer"]
+offset_left = 86.0
+offset_top = -14.0
+offset_right = 126.0
+offset_bottom = 19.0
+theme = ExtResource("1_a5nna")
+theme_override_font_sizes/font_size = 32
+text = "00
+"
+
+[node name="Seconds-Milliseconds-Colon" type="Label" parent="CanvasLayer/Timer"]
+offset_left = 115.0
+offset_top = -16.0
+offset_right = 155.0
+offset_bottom = 17.0
+theme = ExtResource("1_a5nna")
+theme_override_font_sizes/font_size = 32
+text = ":
+"
+
+[node name="Milliseconds" type="Label" parent="CanvasLayer/Timer"]
+offset_left = 121.0
+offset_top = -14.0
+offset_right = 167.0
+offset_bottom = 19.0
+theme = ExtResource("1_a5nna")
+theme_override_font_sizes/font_size = 32
+text = "000"
+
+[node name="Deaths" type="Node2D" parent="CanvasLayer"]
+position = Vector2(261, 176)
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Deaths"]
+position = Vector2(0, -1)
+texture = ExtResource("3_0mhpy")
+
+[node name="Label" type="Label" parent="CanvasLayer/Deaths"]
+offset_left = 18.0
+offset_top = -16.0
+offset_right = 58.0
+offset_bottom = 17.0
+theme = ExtResource("1_a5nna")
+theme_override_font_sizes/font_size = 32
+text = "0"
+
+[node name="Secrets" type="Node2D" parent="CanvasLayer"]
+position = Vector2(264, 220)
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Secrets"]
+position = Vector2(-2, 0)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("4_mny0l")
+
+[node name="CollectedLabel" type="Label" parent="CanvasLayer/Secrets"]
+offset_left = 15.0
+offset_top = -12.0
+offset_right = 43.0
+offset_bottom = 21.0
+theme = ExtResource("1_a5nna")
+theme_override_font_sizes/font_size = 32
+text = "00"
+horizontal_alignment = 2
+
+[node name="Slash" type="Label" parent="CanvasLayer/Secrets"]
+offset_left = 44.0
+offset_top = -12.0
+offset_right = 84.0
+offset_bottom = 21.0
+theme = ExtResource("1_a5nna")
+theme_override_font_sizes/font_size = 32
+text = "/"
+
+[node name="TotalLabel" type="Label" parent="CanvasLayer/Secrets"]
+offset_left = 56.0
+offset_top = -12.0
+offset_right = 96.0
+offset_bottom = 21.0
+theme = ExtResource("1_a5nna")
+theme_override_font_sizes/font_size = 32
+text = "00"
+
+[node name="ChallengeButton" type="Button" parent="CanvasLayer"]
+offset_left = 250.0
+offset_top = 267.0
+offset_right = 412.0
+offset_bottom = 303.0
+focus_neighbor_bottom = NodePath("../QuitButton")
+focus_next = NodePath("../QuitButton")
+focus_previous = NodePath("../QuitButton")
+theme = ExtResource("1_a5nna")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = ExtResource("5_t8sh5")
+theme_override_styles/hover = ExtResource("6_623hw")
+theme_override_styles/pressed = ExtResource("5_t8sh5")
+theme_override_styles/focus = ExtResource("6_623hw")
+text = "CHALLENGE MODE"
+
+[node name="QuitButton" type="Button" parent="CanvasLayer"]
+offset_left = 283.0
+offset_top = 310.0
+offset_right = 378.0
+offset_bottom = 341.0
+focus_neighbor_top = NodePath("../ChallengeButton")
+focus_next = NodePath("../ChallengeButton")
+focus_previous = NodePath("../ChallengeButton")
+theme = ExtResource("1_a5nna")
+theme_override_colors/font_hover_color = Color(0.589844, 0.605469, 0.777344, 1)
+theme_override_colors/font_focus_color = Color(0.589844, 0.605469, 0.777344, 1)
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxEmpty_5m00v")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_yw2an")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_4qt16")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_lgnvp")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_oy51k")
+text = "QUIT"
+
+[connection signal="focus_exited" from="CanvasLayer/ChallengeButton" to="." method="_on_button_focused"]
+[connection signal="pressed" from="CanvasLayer/ChallengeButton" to="." method="_on_challenge_pressed"]
+[connection signal="focus_exited" from="CanvasLayer/QuitButton" to="." method="_on_button_focused"]
+[connection signal="pressed" from="CanvasLayer/QuitButton" to="." method="_on_quit_pressed"]

@@ -28,6 +28,11 @@ func _on_level_end():
 	showLevelEndScreen();
 
 func showLevelEndScreen():
+	StatsTotals.totalDeaths += statsTracker.deathCounter;
+	StatsTotals.totalCollectiblesFound += statsTracker.collectiblesFound;
+	StatsTotals.totalCollectiblesAvailable += statsTracker.collectiblesAvailable;
+	StatsTotals.totalTime += statsTracker.elapsedTime;
+
 	self.visible = true;
 	deathText.text = str(statsTracker.deathCounter);
 
@@ -43,7 +48,7 @@ func showLevelEndScreen():
 	millisecondsText.text = "%03d" % [milliseconds];
 
 	devTimeLabel.text = devTime;
-
+	
 func on_next_level_button_pressed():
 	get_tree().call_group("LevelMounter", "nextLevel");
 
