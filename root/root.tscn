@@ -29,7 +29,6 @@
 position = Vector2(-1, 0)
 script = ExtResource("6_ovqv7")
 levelPaths = Array[PackedScene]([ExtResource("2_hos4s"), ExtResource("3_ob0di"), ExtResource("2_rl4h1"), ExtResource("3_2nj7d"), ExtResource("4_yfh48"), ExtResource("7_eb1s0")])
-currentLevelIndex = 4
 specialLevelIndexes = Array[int]([0, 1, 5])
 
 [node name="HUD" type="CanvasLayer" parent="." groups=["HUD"]]
@@ -129,7 +128,7 @@ process_mode = 3
 
 [node name="Track_One" type="AudioStreamPlayer" parent="MusicPlayer"]
 stream = ExtResource("13_ebshx")
-volume_db = -25.0
+volume_db = -17.0
 autoplay = true
 
 [connection signal="new_level_loaded" from="LevelMounter" to="HUD" method="on_new_level_loaded"]
