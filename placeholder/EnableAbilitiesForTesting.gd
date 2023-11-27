@@ -8,3 +8,4 @@ func _ready():
 	AbilityFlags.isDashEnabled = isDashEnabled;
 	AbilityFlags.isScaleUpEnabled = isScaleUpEnabled;
 	AbilityFlags.isScaleDownEnabled = isScaleDownEnabled;
+	StatsTotals.reset();

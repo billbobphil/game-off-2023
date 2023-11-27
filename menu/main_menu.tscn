@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dl4gfy03v2u11"]
+[gd_scene load_steps=19 format=3 uid="uid://dl4gfy03v2u11"]
 
 [ext_resource type="Script" path="res://menu/MainMenu.gd" id="1_dhxr2"]
 [ext_resource type="Theme" uid="uid://lmesfrfslv4p" path="res://fonts/rainy-hearts-font-theme.tres" id="1_toca2"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://csxx20b35cpt8" path="res://genericUi/controller-32x32.png" id="9_j1yk8"]
 [ext_resource type="Texture2D" uid="uid://ymeokgkxdcvy" path="res://menu/cave-entrance-backdrop.png" id="10_axqvh"]
 [ext_resource type="SpriteFrames" uid="uid://dfq6e7t54sn4r" path="res://player/art/large-scale-sprite-frames.tres" id="10_m1c8g"]
+[ext_resource type="Script" path="res://placeholder/EnableAbilitiesForTesting.gd" id="13_vp2ls"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r2518"]
 
@@ -169,6 +170,9 @@ scale = Vector2(3.6875, 3.6875)
 position = Vector2(-0.000244141, 0.813599)
 scale = Vector2(0.0658749, 0.0658749)
 color = Color(1, 1, 1, 1)
+
+[node name="AbilityAndStatsReset" type="Node2D" parent="."]
+script = ExtResource("13_vp2ls")
 
 [connection signal="focus_exited" from="CanvasLayer/PlayButton" to="." method="_on_button_focused"]
 [connection signal="pressed" from="CanvasLayer/PlayButton" to="." method="_on_play_pressed"]
