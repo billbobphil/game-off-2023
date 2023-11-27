@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://djd4loyuphb7b"]
+[gd_scene load_steps=24 format=3 uid="uid://djd4loyuphb7b"]
 
 [ext_resource type="PackedScene" uid="uid://dl4gfy03v2u11" path="res://menu/main_menu.tscn" id="2_hos4s"]
 [ext_resource type="PackedScene" uid="uid://dsjn2k6b48pjo" path="res://levels/level_one/level_one.tscn" id="2_rl4h1"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://b6hahw06rx4ll" path="res://gameEnd/game_end.tscn" id="7_eb1s0"]
 [ext_resource type="Texture2D" uid="uid://c5jwvuq1k0flk" path="res://collectibles/collecitble-icon.png" id="7_gpfsh"]
 [ext_resource type="AudioStream" uid="uid://cagnuh0m17fkc" path="res://abilityUnlocks/dramatic-zoom.mp3" id="8_5xvi2"]
+[ext_resource type="PackedScene" uid="uid://bgn6q2cyo648y" path="res://levels/level_challenge/level_challenge.tscn" id="8_11uw4"]
 [ext_resource type="AudioStream" uid="uid://5m7ak0bsmlma" path="res://genericSound/button-click.wav" id="9_v3ha5"]
 [ext_resource type="AudioStream" uid="uid://c6hqtbin1q7bv" path="res://player/sound/dash.wav" id="10_g6ral"]
 [ext_resource type="AudioStream" uid="uid://jcmeij684g88" path="res://collectibles/collectible-pickup.wav" id="12_6hh8i"]
@@ -28,7 +29,8 @@
 [node name="LevelMounter" type="Node2D" parent="." groups=["LevelMounter"]]
 position = Vector2(-1, 0)
 script = ExtResource("6_ovqv7")
-levelPaths = Array[PackedScene]([ExtResource("2_hos4s"), ExtResource("3_ob0di"), ExtResource("2_rl4h1"), ExtResource("3_2nj7d"), ExtResource("4_yfh48"), ExtResource("7_eb1s0")])
+levelPaths = Array[PackedScene]([ExtResource("2_hos4s"), ExtResource("3_ob0di"), ExtResource("2_rl4h1"), ExtResource("3_2nj7d"), ExtResource("4_yfh48"), ExtResource("7_eb1s0"), ExtResource("8_11uw4")])
+currentLevelIndex = 6
 specialLevelIndexes = Array[int]([0, 1, 5])
 
 [node name="HUD" type="CanvasLayer" parent="." groups=["HUD"]]

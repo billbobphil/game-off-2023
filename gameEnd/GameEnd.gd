@@ -17,9 +17,6 @@ func _ready():
 	collectedLabel.text = "%02d" % StatsTotals.totalCollectiblesFound;
 	totalLabel.text = "%02d" % StatsTotals.totalCollectiblesAvailable;
 
-	# collectedLabel.text = str(StatsTotals.totalCollectiblesFound);
-	# totalLabel.text = str(StatsTotals.totalCollectiblesAvailable);
-
 	var hours = int(StatsTotals.totalTime / 3600)
 	var minutes = int(StatsTotals.totalTime / 60) % 60
 	var seconds = int(StatsTotals.totalTime) % 60
