@@ -47,10 +47,12 @@ var isDashing : bool = false;
 var canDash : bool = true;
 var dashTimer : float = 0;
 var dashCooldownTimer : float = 0;
+var slideCollisionCountsAboveTwo : int = 0;
 
 
 
 var currentScale : Scales = Scales.NORMAL;
+var previousScale : Scales = Scales.NORMAL;
 
 enum Scales {
 	SMALL,
@@ -171,6 +173,12 @@ func _physics_process(delta):
 	horizontalMovement();
 	dashInputHandler();
 	move_and_slide()
+	if(get_slide_collision_count() >= 2):
+		slideCollisionCountsAboveTwo += 1;
+		if(slideCollisionCountsAboveTwo > 5):
+			scaleDown();
+	else:
+		slideCollisionCountsAboveTwo = 0;
 
 func jump():
 	velocity.y = jumpVelocity
@@ -269,4 +277,5 @@ func getDashDirection() -> Vector2:
 func die(_body):
 	SoundManager.playDeath();
 	self.queue_free()
+
 

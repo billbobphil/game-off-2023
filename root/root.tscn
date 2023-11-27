@@ -31,7 +31,7 @@
 position = Vector2(-1, 0)
 script = ExtResource("6_ovqv7")
 levelPaths = Array[PackedScene]([ExtResource("2_hos4s"), ExtResource("3_ob0di"), ExtResource("2_rl4h1"), ExtResource("3_2nj7d"), ExtResource("4_yfh48"), ExtResource("7_eb1s0"), ExtResource("8_11uw4"), ExtResource("9_dv5fj")])
-currentLevelIndex = 6
+currentLevelIndex = 4
 specialLevelIndexes = Array[int]([0, 1, 5])
 
 [node name="HUD" type="CanvasLayer" parent="." groups=["HUD"]]
