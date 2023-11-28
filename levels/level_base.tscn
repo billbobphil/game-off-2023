@@ -40,6 +40,8 @@ format = 2
 
 [node name="BoostPlatforms" type="Node2D" parent="Platforms"]
 
+[node name="MovingPlatforms" type="Node2D" parent="Platforms"]
+
 [node name="CanvasModulate" type="CanvasModulate" parent="." groups=["canvasModulate"]]
 color = Color(0.419608, 0.419608, 0.419608, 1)
 

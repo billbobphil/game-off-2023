@@ -389,7 +389,6 @@ position = Vector2(97.5254, 268.472)
 
 [node name="CollisionShape2D" parent="CameraManager/StartingLocation" index="0"]
 position = Vector2(42.2118, -54.196)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_gqafn")
 
 [node name="Screen1" parent="CameraManager" index="2" instance=ExtResource("2_io1ry")]
@@ -483,7 +482,6 @@ newYPosition = 780.0
 
 [node name="CollisionShape2D" parent="CameraManager/Screen-6-Right" index="0"]
 position = Vector2(-43.1655, 98.007)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_7b14a")
 
 [node name="Screen_One" parent="CameraManager" index="13" node_paths=PackedStringArray("transitions") instance=ExtResource("4_7elq6")]
@@ -497,7 +495,6 @@ position = Vector2(71, 180)
 
 [node name="CollisionShape2D" parent="CameraManager/Screen_One/Left" index="0"]
 position = Vector2(-33.7883, 2.51038)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_cao4m")
 
 [node name="Right" parent="CameraManager/Screen_One" index="1"]
@@ -541,7 +538,6 @@ position = Vector2(837, 223)
 
 [node name="CollisionShape2D" parent="CameraManager/Screen_Four/Right" index="0"]
 position = Vector2(-8.42969, -39.1617)
-scale = Vector2(1, 1)
 
 [node name="Third" parent="CameraManager/Screen_Four" index="2" instance=ExtResource("2_io1ry")]
 position = Vector2(252, 216)
@@ -686,7 +682,6 @@ newYPosition = 236.0
 
 [node name="CollisionShape2D" parent="CameraManager/LevelTwo-ThreeTransition" index="0"]
 position = Vector2(-24.8979, 47.9255)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_6yxvh")
 
 [node name="SpawnManager" parent="." index="12" node_paths=PackedStringArray("activeSpawnPoint")]
@@ -743,7 +738,7 @@ position = Vector2(7423, 1435)
 position = Vector2(8377, 1538)
 
 [node name="level_start" parent="." index="20"]
-levelName = "Challenge"
+levelName = "CHALLENGE"
 
 [node name="Torches2" type="Node2D" parent="." index="21"]
 
