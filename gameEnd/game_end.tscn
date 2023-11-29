@@ -1,9 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://b6hahw06rx4ll"]
+[gd_scene load_steps=15 format=3 uid="uid://b6hahw06rx4ll"]
 
 [ext_resource type="Script" path="res://gameEnd/GameEnd.gd" id="1_88ycx"]
 [ext_resource type="Theme" uid="uid://lmesfrfslv4p" path="res://fonts/rainy-hearts-font-theme.tres" id="1_a5nna"]
 [ext_resource type="Texture2D" uid="uid://x4m51g0cvkb8" path="res://levelEnd/clock-icon-32x32.png" id="2_8ofiw"]
+[ext_resource type="Texture2D" uid="uid://d47vvbdw4ij6" path="res://placeholder/art/32x32-cube.png" id="2_ovg4j"]
 [ext_resource type="Texture2D" uid="uid://hko51bie4a6j" path="res://hud/player-death-icon-32x32.png" id="3_0mhpy"]
+[ext_resource type="Texture2D" uid="uid://5nr3mx2gwubf" path="res://gameEnd/IMG_0144.jpg" id="3_yild4"]
 [ext_resource type="Texture2D" uid="uid://c5jwvuq1k0flk" path="res://collectibles/collecitble-icon.png" id="4_mny0l"]
 [ext_resource type="StyleBox" uid="uid://bgxp5mgg8aux6" path="res://menu/button-texture-default.tres" id="5_t8sh5"]
 [ext_resource type="StyleBox" uid="uid://dc84olfnlb6ny" path="res://menu/button-texture-hovered.tres" id="6_623hw"]
@@ -29,6 +31,23 @@ script = ExtResource("1_88ycx")
 color = Color(0.380392, 0.380392, 0.380392, 1)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Sprite2D2" type="Sprite2D" parent="CanvasLayer"]
+modulate = Color(0.078125, 0.0546875, 0.0625, 1)
+position = Vector2(323, 182.5)
+scale = Vector2(21.1875, 12.4063)
+texture = ExtResource("2_ovg4j")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(323.46, 180)
+scale = Vector2(0.716, 0.716)
+texture = ExtResource("3_yild4")
+
+[node name="Sprite2D3" type="Sprite2D" parent="CanvasLayer"]
+modulate = Color(0, 0, 0, 0.803922)
+position = Vector2(323, 182.5)
+scale = Vector2(21.1875, 12.4063)
+texture = ExtResource("2_ovg4j")
 
 [node name="Label" type="Label" parent="CanvasLayer"]
 offset_left = 205.0
