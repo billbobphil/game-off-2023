@@ -25,6 +25,7 @@ offset_bottom = 160.0
 theme = ExtResource("2_ld5a5")
 theme_override_font_sizes/font_size = 64
 text = "LEVEL NAME"
+horizontal_alignment = 1
 
 [node name="Button" type="Button" parent="CanvasLayer"]
 clip_children = 1

@@ -1,22 +1,12 @@
 extends Node2D
 
-@onready var platform : CharacterBody2D = get_node("Platform")
-@export var startNode : Node2D;
-@export var endNode : Node2D;
-var movingTowardsNode : Node2D;
-@export var speed : float = 100;
+@onready var pathFollow : PathFollow2D = get_node("Path2D/PathFollow2D");
+@export var speed : float;
+@export var shouldRandomizeStartLocation : bool;
 
 func _ready():
-	movingTowardsNode = startNode;
+	if(shouldRandomizeStartLocation):
+		pathFollow.progress_ratio = randf();
 
-func _physics_process(_delta):
-	var direction = (movingTowardsNode.global_position - platform.global_position).normalized();
-	platform.velocity = direction * speed;
-	platform.move_and_slide();
-	# platform.position += direction * delta * 100;
-
-	if movingTowardsNode.global_position.distance_to(platform.global_position) < 1:
-		if movingTowardsNode == startNode:
-			movingTowardsNode = endNode;
-		else:
-			movingTowardsNode = startNode;
+func _process(delta):
+	pathFollow.progress += speed * delta
