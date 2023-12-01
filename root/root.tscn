@@ -120,7 +120,7 @@ volume_db = -4.0
 
 [node name="PlayerLandingPlayer" type="AudioStreamPlayer" parent="UniversalAvailableAudio"]
 stream = ExtResource("17_l46ra")
-volume_db = -5.0
+volume_db = -3.0
 
 [node name="ButtonFocusPlayer" type="AudioStreamPlayer" parent="UniversalAvailableAudio"]
 stream = ExtResource("19_lwn5x")

@@ -43,7 +43,8 @@ texture = ExtResource("5_qk6tp")
 
 [node name="FootstepsPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_605yo")
-volume_db = -5.0
+volume_db = -3.0
 
 [node name="JumpPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_xwnx2")
+volume_db = 1.0
