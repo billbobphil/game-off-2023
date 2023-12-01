@@ -175,7 +175,7 @@ func _physics_process(delta):
 	move_and_slide()
 	if(get_slide_collision_count() >= 2):
 		slideCollisionCountsAboveTwo += 1;
-		if(slideCollisionCountsAboveTwo > 10):
+		if(slideCollisionCountsAboveTwo > 10 && AbilityFlags.isScaleDownEnabled):
 			scaleDown();
 	else:
 		slideCollisionCountsAboveTwo = 0;

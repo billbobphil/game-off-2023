@@ -102,10 +102,10 @@ size = Vector2(26, 18)
 size = Vector2(24.8853, 18)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_056ep"]
-size = Vector2(142, 16.064)
+size = Vector2(142, 20.064)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ylh54"]
-size = Vector2(43.0001, 15.1271)
+size = Vector2(43.0001, 26.127)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fwh2y"]
 size = Vector2(60, 16.0849)
@@ -246,6 +246,9 @@ position = Vector2(572, 180)
 position = Vector2(2580.72, -466.076)
 cameraXPosition = 2883.0
 cameraYPosition = -290.0
+
+[node name="SpawnManager" parent="." index="5" node_paths=PackedStringArray("activeSpawnPoint")]
+activeSpawnPoint = NodePath("ScreenOne")
 
 [node name="ScreenOne" parent="SpawnManager" index="0" instance=ExtResource("3_bhs05")]
 position = Vector2(56, 305)
@@ -459,14 +462,14 @@ shape = SubResource("RectangleShape2D_l6oc6")
 position = Vector2(2343.39, -326.936)
 
 [node name="CollisionShape2D" parent="DeathPlanes/DeathPlane25" index="0"]
-position = Vector2(50.6106, 1.96799)
+position = Vector2(50.6106, -0.0320129)
 shape = SubResource("RectangleShape2D_056ep")
 
 [node name="DeathPlane26" parent="DeathPlanes" index="25" instance=ExtResource("6_dgr5w")]
 position = Vector2(2312.3, -364.127)
 
 [node name="CollisionShape2D" parent="DeathPlanes/DeathPlane26" index="0"]
-position = Vector2(0.195557, -2.43643)
+position = Vector2(0.195557, 3.06351)
 shape = SubResource("RectangleShape2D_ylh54")
 
 [node name="DeathPlane27" parent="DeathPlanes" index="26" instance=ExtResource("6_dgr5w")]
@@ -560,17 +563,13 @@ position = Vector2(0, 0)
 [node name="LevelEnd" parent="." index="10"]
 position = Vector2(3147, -251)
 
+[node name="level_summary_screen" parent="." index="11"]
+devTime = "01:09:000"
+
 [node name="level_start" parent="." index="13"]
 levelName = "ENDINGS"
 
-[node name="Camera2D" type="Camera2D" parent="." index="14"]
-position = Vector2(2883, -290)
-script = ExtResource("6_b3hdd")
-isDashEnabled = true
-isScaleUpEnabled = true
-isScaleDownEnabled = true
-
-[node name="OwlFriend" parent="." index="15" instance=ExtResource("13_fqc7l")]
+[node name="OwlFriend" parent="." index="14" instance=ExtResource("13_fqc7l")]
 position = Vector2(2813.6, -391.963)
 
 [node name="DialogSystem" parent="OwlFriend" index="1"]
@@ -596,6 +595,12 @@ position = Vector2(-206.369, -36.002)
 position = Vector2(-9.73584, -8.03467)
 shape = SubResource("RectangleShape2D_4bm5b")
 debug_color = Color(0.545098, 0.423529, 0.960784, 0.419608)
+
+[node name="AbilityEnabler" type="Node2D" parent="." index="15"]
+script = ExtResource("6_b3hdd")
+isDashEnabled = true
+isScaleUpEnabled = true
+isScaleDownEnabled = true
 
 [connection signal="body_entered" from="OwlFriend/DialogSystem/Area2D" to="OwlFriend/DialogSystem" method="startDialogTrigger"]
 

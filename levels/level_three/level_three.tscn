@@ -289,6 +289,9 @@ cameraYPosition = 1000.0
 [node name="Right" parent="CameraManager/ScreenSix" index="1"]
 position = Vector2(555, 180)
 
+[node name="SpawnManager" parent="." index="5" node_paths=PackedStringArray("activeSpawnPoint")]
+activeSpawnPoint = NodePath("ScreenOne")
+
 [node name="ScreenOne" parent="SpawnManager" index="0" instance=ExtResource("3_olk2j")]
 position = Vector2(51, 83)
 
@@ -662,23 +665,18 @@ position = Vector2(1865, 1138)
 [node name="level_summary_screen" parent="." index="11"]
 devTime = "00:50:500"
 
-[node name="TestCamera" type="Camera2D" parent="." index="13"]
-offset = Vector2(1600, 1000)
-script = ExtResource("6_eccqm")
-isDashEnabled = true
-
-[node name="ScaleUpPickup" parent="." index="14" instance=ExtResource("4_6cwrr")]
+[node name="ScaleUpPickup" parent="." index="13" instance=ExtResource("4_6cwrr")]
 position = Vector2(535, 65)
 abilityToGive = 1
 
-[node name="ScaleDownPickup" parent="." index="15" instance=ExtResource("4_6cwrr")]
+[node name="ScaleDownPickup" parent="." index="14" instance=ExtResource("4_6cwrr")]
 position = Vector2(-568, 299)
 abilityToGive = 2
 
-[node name="level_start" parent="." index="16"]
+[node name="level_start" parent="." index="15"]
 levelName = "THE FALL"
 
-[node name="ScreenOne_Owl" parent="." index="17" instance=ExtResource("6_uqqcq")]
+[node name="ScreenOne_Owl" parent="." index="16" instance=ExtResource("6_uqqcq")]
 position = Vector2(170, 35)
 
 [node name="DialogSystem" parent="ScreenOne_Owl" index="1"]
@@ -709,7 +707,7 @@ position = Vector2(35, -2.5)
 shape = SubResource("RectangleShape2D_tk6dv")
 debug_color = Color(0.509804, 0.454902, 0.921569, 0.419608)
 
-[node name="ScreenThree_Owl" parent="." index="18" instance=ExtResource("6_uqqcq")]
+[node name="ScreenThree_Owl" parent="." index="17" instance=ExtResource("6_uqqcq")]
 position = Vector2(56.916, 717.046)
 
 [node name="DialogSystem" parent="ScreenThree_Owl" index="1"]
@@ -738,6 +736,10 @@ position = Vector2(103.084, 33.9545)
 position = Vector2(0, -10.5)
 shape = SubResource("RectangleShape2D_8u6ko")
 debug_color = Color(0.631373, 0.380392, 0.929412, 0.419608)
+
+[node name="AbilityEnabler" type="Node2D" parent="." index="18"]
+script = ExtResource("6_eccqm")
+isDashEnabled = true
 
 [connection signal="body_entered" from="ScreenOne_Owl/Area2D" to="ScreenOne_Owl/DialogSystem" method="startDialogTrigger"]
 [connection signal="body_entered" from="ScreenThree_Owl/Area2D" to="ScreenThree_Owl/DialogSystem" method="startDialogTrigger"]
