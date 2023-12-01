@@ -1885,6 +1885,7 @@ shape = SubResource("RectangleShape2D_3w33r")
 
 [node name="AbilityReset" type="Node2D" parent="." index="32"]
 script = ExtResource("17_wmrnc")
+shouldResetStats = true
 
 [editable path="CameraManager/StartingLocation"]
 [editable path="CameraManager/Screen1"]
